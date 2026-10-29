@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Agustina Torres — portfolio focused on Data Engineering, Data Science, Machine Learning and Cloud.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0F1B2A">
+  <title>Agustina Torres | Data Engineering, Data Science &amp; ML</title>
+  <link rel="alternate" hreflang="en" href="./">
+  <link rel="alternate" hreflang="es" href="es/">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Small progressive enhancement (scroll reveal, card spotlight, active nav).
+       The page is fully usable without it. -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- Accessibility: lets keyboard and screen-reader users jump straight to the content. -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ===================== HEADER & NAVIGATION ===================== -->
+  <header id="header" class="site-header">
+    <div class="site-header__inner">
+      <p class="brand"><a href="#hero">Agustina Torres</a></p>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#skills">Technical Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <p class="lang-switch" aria-label="Language">
+        <span aria-current="page" lang="en">EN</span>
+        <a href="es/index.html" hreflang="es" lang="es" title="Ver en español">ES</a>
+      </p>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ===================== HERO / INTRODUCTION ===================== -->
+    <section id="hero" class="hero" aria-labelledby="hero-title">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <h1 id="hero-title" class="hero__name">Agustina Torres</h1>
+          <p class="hero__role">Aspiring Data Engineer &amp; Machine Learning Engineer</p>
+          <p class="hero__intro">Information Systems Engineering student at UTN FRBA, building projects that turn messy data into reliable models, pipelines and decision tools.</p>
+
+          <ul class="hero__focus" aria-label="Focus areas">
+            <li>Data Engineering</li>
+            <li>Machine Learning</li>
+            <li>Cloud</li>
+          </ul>
+
+          <p class="hero__actions">
+            <a class="button button--primary" href="#projects">View Projects</a>
+            <a class="button button--secondary" href="https://github.com/agtorres1">GitHub Profile</a>
+            <a class="button button--ghost" href="#contact">Contact</a>
+            <!-- PENDING: add "Download CV" link once a CV file is available. -->
+          </p>
+        </div>
+
+        <!-- Conceptual pipeline: how the projects below connect. Real text, not an image. -->
+        <figure class="pipeline" aria-labelledby="pipeline-caption">
+          <figcaption id="pipeline-caption" class="pipeline__caption">How my projects connect</figcaption>
+          <ol class="pipeline__steps">
+            <li class="pipeline__step">
+              <span class="pipeline__title">Messy sources</span>
+              <span class="pipeline__detail">Flat tables and inconsistent spreadsheets</span>
+            </li>
+            <li class="pipeline__step">
+              <span class="pipeline__title">Clean &amp; model</span>
+              <span class="pipeline__detail">Entity resolution, normalization, SQL</span>
+            </li>
+            <li class="pipeline__step">
+              <span class="pipeline__title">Train &amp; evaluate</span>
+              <span class="pipeline__detail">scikit-learn, LightGBM</span>
+            </li>
+            <li class="pipeline__step">
+              <span class="pipeline__title">Ship to the cloud</span>
+              <span class="pipeline__detail">Azure Machine Learning, AWS</span>
+            </li>
+          </ol>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===================== ABOUT ME ===================== -->
+    <section id="about" class="section section--split" aria-labelledby="about-title">
+      <h2 id="about-title" class="section__title">About Me</h2>
+      <div class="section__body prose reveal">
+        <p>I am an Information Systems Engineering student at UTN FRBA (Universidad Tecnológica Nacional, Facultad Regional Buenos Aires).</p>
+        <p>My projects focus on data modeling and data quality first: migrating and normalizing inconsistent sources, resolving duplicated identities and validating results. On top of that foundation I work on machine learning (classification and demand forecasting) and on taking models to the cloud with Azure Machine Learning.</p>
+        <!-- PENDING: personal bio, professional experience, location, languages and interests.
+             Not documented in the public GitHub profile — to be provided by the owner. -->
+        <!-- PENDING: optional profile photo. -->
+      </div>
+    </section>
+
+    <!-- ===================== TECHNICAL SKILLS ===================== -->
+    <section id="skills" class="section" aria-labelledby="skills-title">
+      <h2 id="skills-title" class="section__title">Technical Skills</h2>
+      <!-- Source: technologies documented in the public repositories listed in #projects,
+           plus knowledge confirmed by the owner (T-SQL DML and views; dimensional modeling). -->
+
+      <div class="skills-bento">
+        <div class="skill-card skill-card--data spotlight reveal">
+          <svg class="skill-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/></svg>
+          <h3>Data Engineering &amp; Databases</h3>
+          <ul class="skill-list">
+            <li>SQL Server 2019 and T-SQL (DDL, DML, stored procedures, views)</li>
+            <li>SQL Server Management Studio</li>
+            <li>MySQL 8</li>
+            <li>Relational modeling and normalization</li>
+            <li>Dimensional modeling and star schema design</li>
+            <li>Python data pipelines: consolidating, cleaning and loading data incrementally and idempotently</li>
+            <li>Data cleaning, entity resolution and data validation</li>
+          </ul>
+        </div>
+
+        <div class="skill-card skill-card--ml spotlight reveal">
+          <svg class="skill-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="5" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 6.8 10.2 11M7 17.2l3.2-4.2M13.8 11 17 6.8M13.8 13l3.2 4.2"/></svg>
+          <h3>Machine Learning</h3>
+          <ul class="skill-list">
+            <li>scikit-learn and LightGBM</li>
+            <li>Classification: Logistic Regression, Decision Trees, Random Forest, Gradient Boosting</li>
+            <li>Time-series demand forecasting</li>
+            <li>Feature engineering and hyperparameter tuning (RandomizedSearchCV, GridSearchCV)</li>
+            <li>Model evaluation: ROC-AUC, KS statistic, lift and gains, PSI stability</li>
+          </ul>
+        </div>
+
+        <div class="skill-card skill-card--cloud spotlight reveal">
+          <svg class="skill-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 18h10.5a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.6 9.2 4.5 4.5 0 0 0 7 18Z"/></svg>
+          <h3>Cloud &amp; MLOps</h3>
+          <ul class="skill-list">
+            <li>Azure Machine Learning (pipelines with SDK v2, Model Registry, managed endpoints)</li>
+            <li>MLflow tracking</li>
+            <li>AWS, Nginx and Gunicorn (deployment stack of StockifAI)</li>
+          </ul>
+        </div>
+
+        <div class="skill-card skill-card--code spotlight reveal">
+          <svg class="skill-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 5l-3 14"/></svg>
+          <h3>Programming &amp; Data Analysis</h3>
+          <ul class="skill-list">
+            <li>Python (pandas, NumPy, openpyxl, matplotlib)</li>
+            <li>Jupyter Notebooks</li>
+            <li>Java and C (academic coursework)</li>
+          </ul>
+        </div>
+
+        <div class="skill-card skill-card--bi spotlight reveal">
+          <svg class="skill-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 9v11"/></svg>
+          <h3>BI &amp; Automation</h3>
+          <ul class="skill-list">
+            <li>Power BI (data modeling, DAX measures, dashboards)</li>
+            <li>Looker Studio</li>
+            <li>Google Forms, Google Sheets and Apps Script</li>
+          </ul>
+        </div>
+
+        <div class="skill-card skill-card--web spotlight reveal">
+          <svg class="skill-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8.5h18"/><circle cx="6" cy="6.3" r=".6"/><circle cx="8.2" cy="6.3" r=".6"/></svg>
+          <h3>Web Application Stack</h3>
+          <ul class="skill-list">
+            <li>Django 5 and Django REST Framework</li>
+            <li>Angular 18</li>
+            <li>Auth0 (JWT authentication)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROJECTS ===================== -->
+    <section id="projects" class="section" aria-labelledby="projects-title">
+      <h2 id="projects-title" class="section__title">Projects</h2>
+      <p class="section__lede">Six projects, from data modeling to a complete product. The diagram on each card is a conceptual illustration of the work, not a screenshot or a result.</p>
+      <!-- Order: Data Engineering & data quality → Machine Learning & Cloud → end-to-end product.
+           All content comes from each repository's README. No metrics are shown unless
+           they are reported in the README and based on real (non-synthetic) data.
+           Each card shows a short summary; the full verified text is inside <details>. -->
+
+      <div class="bento">
+
+        <!-- ---------- Enviar S.A. — Power BI dashboard (BI & Analytics) ---------- -->
+        <article id="project-enviar" class="bento-card bento-card--bi spotlight reveal" aria-labelledby="project-enviar-title">
+          <div class="product-layout">
+            <div class="product-layout__text">
+              <div class="card-meta">
+                <p class="card-kicker">Business Intelligence</p>
+                <p class="status-chip status-chip--done">Completed</p>
+              </div>
+              <h3 id="project-enviar-title" class="card-title card-title--large">Enviar S.A. — Sales Dashboard in Power BI</h3>
+              <p class="card-problem">A distribution company needed a single place to monitor sales, margins, shipping costs and its provincial managers.</p>
+              <p class="card-summary">Three-page Power BI report built on a star-schema data warehouse: KPIs compared with the previous year, a map of Argentina with profit by province, product and customer rankings, and logistics costs.</p>
+              <ul class="shot-findings" aria-label="Key findings">
+                <li>Furniture brings in $5.2M in sales but only a 2.3% margin, versus 14.8% for Technology.</li>
+                <li>51% of sales lines lose money; discounts above 5% cut the margin from 11.9% to 7.8%.</li>
+                <li>Sales grew 7.6% between 2022 and 2024 with a stable 10–11% margin.</li>
+              </ul>
+              <ul class="tags" aria-label="Main technologies">
+                <li>Power BI</li>
+                <li>DAX</li>
+                <li>Power Query</li>
+                <li>Star schema</li>
+                <li>Data storytelling</li>
+              </ul>
+            </div>
+
+            <figure class="card-visual card-visual--shot">
+              <a class="shot-main" href="img/enviar-resumen.jpg"><img src="img/enviar-resumen.jpg" width="1416" height="840" loading="lazy" alt="Summary page of the Enviar S.A. Power BI dashboard: total sales of $3.69M in 2024, KPIs for profit, margin, orders and units, sales by segment and a map of Argentina with profit by province."></a>
+              <div class="shot-thumbs">
+                <a href="img/enviar-productos.jpg"><img src="img/enviar-productos.jpg" width="1416" height="840" loading="lazy" alt="Products and customers page: active customers, average ticket, top 10 products, sales and margin by category, top 10 customers and margin by subcategory."></a>
+                <a href="img/enviar-logistica.jpg"><img src="img/enviar-logistica.jpg" width="1416" height="840" loading="lazy" alt="Logistics and managers page: shipping cost KPIs, orders by shipping method, products with the highest shipping cost and monthly margin per manager."></a>
+              </div>
+              <figcaption class="shot-caption">Real screenshots of the report (2024 filter). Select an image to view it full size.</figcaption>
+            </figure>
+          </div>
+
+          <details class="card-details">
+            <summary>Full details<span class="visually-hidden"> for Enviar S.A.</span></summary>
+            <dl class="details-list details-list--wide">
+              <div><dt>Problem</dt>
+                <dd>Enviar S.A. sells technology, furniture and office supplies across Argentina. Management needed to track monthly and year-to-date sales, best-selling products, shipping methods, top customers by segment, monthly margin per provincial manager and the products with the highest shipping cost.</dd></div>
+              <div><dt>Solution</dt>
+                <dd>A Power BI model over the company's star-schema data warehouse (sales fact table plus product, customer, segment, province, shipping, priority, packaging and distribution-center dimensions) with an added date table. DAX measures cover year-over-year comparison, year-to-date totals, top-10 rankings and conditional colors. The report is organized by business question rather than by assignment item, with a custom background design, side navigation, synchronized filters and a findings panel.</dd></div>
+              <div><dt>Technologies</dt>
+                <dd>Power BI Desktop, DAX (time intelligence, RANKX), Power Query, dimensional modeling, Power BI project format (PBIP)</dd></div>
+              <div><dt>Status</dt>
+                <dd>Completed — Business Intelligence elective, UTN FRBA (2025), redesigned in 2026.</dd></div>
+            </dl>
+          </details>
+        </article>
+
+        <!-- ---------- SQL Server Data Migration & BI ---------- -->
+        <article id="project-sql-migration" class="bento-card bento-card--sql spotlight reveal" aria-labelledby="project-sql-migration-title">
+          <div class="card-meta">
+            <p class="card-kicker">Data Engineering</p>
+            <p class="status-chip status-chip--done">Completed</p>
+          </div>
+          <h3 id="project-sql-migration-title" class="card-title">SQL Server Data Migration &amp; BI</h3>
+          <p class="card-problem">A real-estate agency ran its whole operation from one denormalized table of about 90 columns.</p>
+
+          <figure class="card-visual">
+            <span class="concept-tag">Concept</span>
+            <svg class="diagram" viewBox="0 0 340 150" role="img" aria-labelledby="dg-sql-title">
+              <title id="dg-sql-title">Simplified entity-relationship sketch of the transactional model: Provincia, Localidad, Barrio, Inmueble, Persona, Anuncio, Alquiler and Venta.</title>
+              <g class="dg-lines">
+                <path d="M49 34v28M49 88v28M90 129h38M169 34v82M210 129h38M289 116V88M330 129h6V21h-6"/>
+              </g>
+              <g class="dg-box"><rect x="8" y="8" width="82" height="26" rx="5"/><text x="49" y="25">Provincia</text></g>
+              <g class="dg-box"><rect x="8" y="62" width="82" height="26" rx="5"/><text x="49" y="79">Localidad</text></g>
+              <g class="dg-box"><rect x="8" y="116" width="82" height="26" rx="5"/><text x="49" y="133">Barrio</text></g>
+              <g class="dg-box"><rect x="128" y="8" width="82" height="26" rx="5"/><text x="169" y="25">Persona</text></g>
+              <g class="dg-box dg-box--key"><rect x="128" y="116" width="82" height="26" rx="5"/><text x="169" y="133">Inmueble</text></g>
+              <g class="dg-box"><rect x="248" y="8" width="82" height="26" rx="5"/><text x="289" y="25">Venta</text></g>
+              <g class="dg-box"><rect x="248" y="62" width="82" height="26" rx="5"/><text x="289" y="79">Alquiler</text></g>
+              <g class="dg-box dg-box--key"><rect x="248" y="116" width="82" height="26" rx="5"/><text x="289" y="133">Anuncio</text></g>
+            </svg>
+          </figure>
+
+          <p class="card-summary">Normalized transactional model, full data migration with stored procedures, and a star-schema BI model with 9 indicator views.</p>
+
+          <ol class="stage-track" aria-label="Project stages">
+            <li class="stage stage--done">Transactional model <span class="visually-hidden">(implemented)</span></li>
+            <li class="stage stage--done">Data migration <span class="visually-hidden">(implemented)</span></li>
+            <li class="stage stage--done">BI model <span class="visually-hidden">(implemented)</span></li>
+            <li class="stage stage--done">Verification <span class="visually-hidden">(implemented)</span></li>
+          </ol>
+
+          <ul class="tags" aria-label="Main technologies">
+            <li>SQL Server 2019</li>
+            <li>T-SQL</li>
+            <li>Stored procedures</li>
+          </ul>
+
+          <details class="card-details">
+            <summary>Full details<span class="visually-hidden"> for SQL Server Data Migration &amp; BI</span></summary>
+            <dl class="details-list">
+              <div><dt>Problem</dt>
+                <dd>A real-estate agency kept its whole operation — properties, owners, listings, agents, branches, sales, rentals, tenants and payments — in a single denormalized table of about 90 columns, with data mixed and repeated in every row.</dd></div>
+              <div><dt>Solution</dt>
+                <dd>A normalized transactional model in SQL Server: a T-SQL stored procedure creates its 29 tables with primary and foreign keys, documented in a full entity-relationship diagram. Design choices include a shared Person entity with role tables, catalogs for every typed value, a Province → City → Neighborhood hierarchy and a many-to-many property-features relation. Stored procedures migrate the data in dependency order without modifying the source; a star-schema BI model (9 dimensions, including time, location, branch, age range and surface range) feeds 9 indicator views such as rent delinquency, listing-to-deal conversion, price per m² and commissions per branch; and a verification script compares row counts between source and target.</dd></div>
+              <div><dt>Technologies</dt>
+                <dd>SQL Server 2019, T-SQL (DDL, DML, stored procedures, views), SQL Server Management Studio</dd></div>
+              <div><dt>Status</dt>
+                <dd>Completed — academic project, Data Management course, UTN FRBA. The source database provided by the course is not included in the repository.</dd></div>
+            </dl>
+          </details>
+
+          <ul class="card-links">
+            <li><a class="link-button" href="https://github.com/agtorres1/sql-server-data-migration-bi">GitHub repository<span class="visually-hidden"> for SQL Server Data Migration &amp; BI</span></a></li>
+          </ul>
+        </article>
+
+        <!-- ---------- TSU Academic Tracking ---------- -->
+        <article id="project-tsu" class="bento-card bento-card--tsu spotlight reveal" aria-labelledby="project-tsu-title">
+          <div class="card-meta">
+            <p class="card-kicker">Data Quality</p>
+            <p class="status-chip status-chip--done">Completed</p>
+          </div>
+          <h3 id="project-tsu-title" class="card-title">TSU Academic Tracking</h3>
+          <p class="card-problem">A tutoring program tracked students across 15+ inconsistent Excel spreadsheets.</p>
+
+          <p class="note"><strong>Synthetic data.</strong> All data in this project is synthetic. Results illustrate the method and do not describe the real program.</p>
+
+          <figure class="card-visual">
+            <span class="concept-tag">Concept</span>
+            <svg class="diagram" viewBox="0 0 356 128" role="img" aria-labelledby="dg-tsu-title">
+              <title id="dg-tsu-title">Data flow: many spreadsheets, identity resolution by ID then email then name, a single relational base, and a dashboard.</title>
+              <g class="dg-sheet"><rect x="4" y="34" width="52" height="44" rx="4"/><rect x="10" y="28" width="52" height="44" rx="4"/><rect x="16" y="22" width="52" height="44" rx="4"/><path d="M16 33h52M16 44h52M16 55h52M33 22v44M50 22v44"/></g>
+              <text class="dg-label" x="38" y="100">15+ sheets</text>
+              <path class="dg-arrow" d="M72 50h16"/>
+              <g class="dg-box dg-box--key"><rect x="92" y="26" width="120" height="48" rx="6"/><text x="152" y="46">Resolve IDs</text><text class="dg-small" x="152" y="62">ID → email → name</text></g>
+              <path class="dg-arrow" d="M214 50h10"/>
+              <g class="dg-cyl"><path d="M228 30v36c0 3.3 9 6 20 6s20-2.7 20-6V30"/><ellipse cx="248" cy="30" rx="20" ry="6"/></g>
+              <text class="dg-label" x="248" y="100">Single base</text>
+              <path class="dg-arrow" d="M272 50h14"/>
+              <g class="dg-dash"><rect x="290" y="24" width="42" height="52" rx="4"/><rect x="296" y="31" width="30" height="8" rx="2"/><rect x="296" y="44" width="13" height="25" rx="2"/><rect x="313" y="44" width="13" height="25" rx="2"/></g>
+              <text class="dg-label dg-label--end" x="354" y="100">Dashboard</text>
+            </svg>
+          </figure>
+
+          <p class="card-summary">Python pipeline that consolidates every sheet into one relational dataset, with incremental loads through Google Forms and a Looker Studio dashboard.</p>
+
+          <ul class="tags" aria-label="Main technologies">
+            <li>Python</li>
+            <li>pandas</li>
+            <li>Apps Script</li>
+            <li>Looker Studio</li>
+          </ul>
+
+          <details class="card-details">
+            <summary>Full details<span class="visually-hidden"> for TSU Academic Tracking</span></summary>
+            <p class="details-note">All data in this project is synthetic. It is generated to mimic the shape and messiness of the real spreadsheets without copying any rows. Results illustrate the method and do not describe the real program.</p>
+            <dl class="details-list">
+              <div><dt>Problem</dt>
+                <dd>A university tutoring program tracked its students across 15+ inconsistent Excel spreadsheets, with different headers, free-text codes, color-coded cells and students recorded with differently formatted IDs. Leadership needed to know how much academic activity students recover after the program and which profiles engage, without cross-referencing spreadsheets by hand.</dd></div>
+              <div><dt>Solution</dt>
+                <dd>A Python pipeline that consolidates all spreadsheets into a single relational dataset, decoding each cell (text and color) and resolving identities by national ID, then email, then name — never merging two different IDs — with a manual review queue. Incremental loading runs through Google Forms and Apps Script, imports from the academic office are idempotent, and a Looker Studio dashboard covers the funnel, post-program activity and student profiles. The analysis is deliberately descriptive (rates with Wilson confidence intervals) rather than predictive.</dd></div>
+              <div><dt>Technologies</dt>
+                <dd>Python (pandas, openpyxl, matplotlib), Jupyter, Google Forms, Google Sheets and Apps Script, Looker Studio</dd></div>
+              <div><dt>Status</dt>
+                <dd>Completed.</dd></div>
+            </dl>
+          </details>
+
+          <ul class="card-links">
+            <li><a class="link-button" href="https://github.com/agtorres1/tsu-seguimiento-academico">GitHub repository<span class="visually-hidden"> for TSU Academic Tracking</span></a></li>
+            <li><a class="link-button link-button--accent" href="https://agtorres1.github.io/tsu-seguimiento-academico/" hreflang="es">Interactive demo (simulation, in Spanish)</a></li>
+          </ul>
+        </article>
+
+        <!-- ---------- Cross-sell Model — Azure MLOps ---------- -->
+        <article id="project-cross-sell" class="bento-card bento-card--xsell spotlight reveal" aria-labelledby="project-cross-sell-title">
+          <div class="card-meta">
+            <p class="card-kicker">Machine Learning &amp; Cloud</p>
+            <p class="status-chip status-chip--progress">In progress</p>
+          </div>
+          <h3 id="project-cross-sell-title" class="card-title">Cross-sell Model — Azure MLOps</h3>
+          <p class="card-problem">Estimate which bank customers are most likely to purchase a new product bundle.</p>
+
+          <figure class="card-visual">
+            <span class="concept-tag">Designed pipeline</span>
+            <svg class="diagram" viewBox="0 0 340 150" role="img" aria-labelledby="dg-xsell-title">
+              <title id="dg-xsell-title">Designed MLOps pipeline: data asset, analytic base table, training and tuning, quality gate, model registry, endpoint and monitoring, with retraining on drift.</title>
+              <g class="dg-box"><rect x="4" y="12" width="68" height="30" rx="5"/><text x="38" y="31">Data asset</text></g>
+              <path class="dg-arrow" d="M74 27h10"/>
+              <g class="dg-box"><rect x="88" y="12" width="56" height="30" rx="5"/><text x="116" y="31">ABT</text></g>
+              <path class="dg-arrow" d="M146 27h10"/>
+              <g class="dg-box dg-box--key"><rect x="160" y="12" width="82" height="30" rx="5"/><text x="201" y="31">Train &amp; tune</text></g>
+              <path class="dg-arrow" d="M244 27h14"/>
+              <g class="dg-gate"><path d="M292 7l30 20-30 20-30-20z"/><text x="292" y="31">Gate</text></g>
+              <path class="dg-arrow" d="M292 49v51"/>
+              <g class="dg-box"><rect x="252" y="104" width="80" height="30" rx="5"/><text x="292" y="123">Registry</text></g>
+              <path class="dg-arrow" d="M250 119h-14"/>
+              <g class="dg-box"><rect x="152" y="104" width="80" height="30" rx="5"/><text x="192" y="123">Endpoint</text></g>
+              <path class="dg-arrow" d="M150 119h-14"/>
+              <g class="dg-box"><rect x="36" y="104" width="96" height="30" rx="5"/><text x="84" y="123">Monitoring</text></g>
+              <path class="dg-loop" d="M84 102V74h117V46"/>
+              <text class="dg-label" x="143" y="68">drift → retrain</text>
+            </svg>
+          </figure>
+
+          <p class="card-summary">Supervised classification model built with the KDD methodology and designed for end-to-end productionization on Azure Machine Learning.</p>
+
+          <ul class="tags" aria-label="Main technologies">
+            <li>Python</li>
+            <li>scikit-learn</li>
+            <li>LightGBM</li>
+            <li>Azure ML</li>
+            <li>MLflow</li>
+          </ul>
+
+          <details class="card-details">
+            <summary>Full details<span class="visually-hidden"> for Cross-sell Model — Azure MLOps</span></summary>
+            <dl class="details-list">
+              <div><dt>Problem</dt>
+                <dd>A bank needs to estimate which customers are most likely to purchase a new product bundle, in order to improve conversion in marketing campaigns and contact queues.</dd></div>
+              <div><dt>Solution</dt>
+                <dd>A supervised classification model built with the KDD methodology: an analytic base table at customer level with aggregate features over 3- and 6-month windows, a one-month lead window to avoid data leakage, and comparison of Logistic Regression, Decision Tree, Random Forest and LightGBM evaluated with ROC-AUC, KS and lift by decile. The project is designed for end-to-end productionization on Azure Machine Learning: versioned data assets, SDK v2 pipelines reusing the same code as the notebooks, a quality gate before model registration, managed endpoints for scoring and drift monitoring.</dd></div>
+              <div><dt>Technologies</dt>
+                <dd>Python, scikit-learn and LightGBM, Azure Machine Learning (SDK v2), MLflow</dd></div>
+              <div><dt>Status</dt>
+                <dd>In progress — final metrics (AUC-ROC, KS, first-decile lift) are not yet reported in the README.</dd></div>
+            </dl>
+          </details>
+
+          <ul class="card-links">
+            <li><a class="link-button" href="https://github.com/agtorres1/cross-sell-model-azure-mlops">GitHub repository<span class="visually-hidden"> for Cross-sell Model — Azure MLOps</span></a></li>
+          </ul>
+        </article>
+
+        <!-- ---------- StockifAI Forecast ---------- -->
+        <article id="project-stockifai-forecast" class="bento-card bento-card--forecast spotlight reveal" aria-labelledby="project-stockifai-forecast-title">
+          <div class="card-meta">
+            <p class="card-kicker">Machine Learning &amp; Cloud</p>
+            <p class="status-chip status-chip--progress">Under construction</p>
+          </div>
+          <h3 id="project-stockifai-forecast-title" class="card-title">StockifAI Forecast</h3>
+          <p class="card-problem">Forecast 4-week demand for automotive spare parts as a standalone module.</p>
+
+          <figure class="card-visual">
+            <span class="concept-tag">Illustrative curve, not real data</span>
+            <svg class="diagram" viewBox="0 0 340 132" role="img" aria-labelledby="dg-fc-title">
+              <title id="dg-fc-title">Illustrative time series: weekly history followed by a four-week forecast with an uncertainty band. Not real data.</title>
+              <path class="dg-axis" d="M10 108h320"/>
+              <path class="dg-axis dg-axis--ticks" d="M255 104v8M280 104v8M305 104v8M330 104v8"/>
+              <path class="dg-band" d="M230 46 255 34 280 38 305 28 330 30 330 62 305 58 280 62 255 56Z"/>
+              <path class="dg-series" d="M10 80 30 70 50 78 70 58 90 66 110 50 130 62 150 44 170 56 190 40 210 52 230 46"/>
+              <path class="dg-forecast" d="M230 46 255 45 280 50 305 43 330 46"/>
+              <path class="dg-today" d="M230 14v94"/>
+              <text class="dg-label" x="120" y="126">weekly history</text>
+              <text class="dg-label dg-label--accent" x="280" y="126">next 4 weeks</text>
+            </svg>
+          </figure>
+
+          <p class="card-summary">The forecasting module from the StockifAI final project, extracted into its own repository and being moved to Azure Machine Learning.</p>
+
+          <ul class="tags" aria-label="Main technologies">
+            <li>Python</li>
+            <li>LightGBM</li>
+            <li>Azure ML</li>
+          </ul>
+
+          <details class="card-details">
+            <summary>Full details<span class="visually-hidden"> for StockifAI Forecast</span></summary>
+            <dl class="details-list">
+              <div><dt>Problem</dt>
+                <dd>Forecasting 4-week demand for automotive spare parts, as a standalone module separated from the StockifAI product.</dd></div>
+              <div><dt>Solution</dt>
+                <dd>The forecasting module from the StockifAI final project, extracted into its own repository and being moved to Azure Machine Learning. It uses demo stock-outflow data from 2020 to 2025.</dd></div>
+              <div><dt>Technologies</dt>
+                <dd>Python, LightGBM, Azure Machine Learning</dd></div>
+              <div><dt>Status</dt>
+                <dd>Under construction.</dd></div>
+            </dl>
+          </details>
+
+          <ul class="card-links">
+            <li><a class="link-button" href="https://github.com/agtorres1/stockifai-forecast">GitHub repository<span class="visually-hidden"> for StockifAI Forecast</span></a></li>
+          </ul>
+        </article>
+
+        <!-- ---------- StockifAI2 — end-to-end product (featured) ---------- -->
+        <article id="project-stockifai2" class="bento-card bento-card--product spotlight reveal" aria-labelledby="project-stockifai2-title">
+          <div class="product-layout">
+            <div class="product-layout__text">
+              <div class="card-meta">
+                <p class="card-kicker">End-to-End Product</p>
+                <p class="status-chip status-chip--done">Final degree project</p>
+              </div>
+              <h3 id="project-stockifai2-title" class="card-title card-title--large">StockifAI2 — Inventory Management</h3>
+              <p class="card-problem">In automotive workshops, too many spare parts tie up money and become obsolete, while too few leave cars waiting for a part.</p>
+              <p class="card-summary">A complete web product that centralizes the stock of one or several workshops, predicts weekly demand per spare part for the next 4 weeks and raises automatic alerts for imminent stock-outs, low stock and overstock.</p>
+
+              <ul class="tags" aria-label="Main technologies">
+                <li>Angular 18</li>
+                <li>Django REST Framework</li>
+                <li>LightGBM</li>
+                <li>MySQL 8</li>
+                <li>Auth0</li>
+                <li>AWS</li>
+              </ul>
+            </div>
+
+            <figure class="card-visual card-visual--arch" aria-labelledby="arch-caption">
+              <span class="concept-tag">Diagram based on the README</span>
+              <ul class="arch">
+                <li class="arch__node arch__node--client"><span class="arch__name">Angular 18 frontend</span><span class="arch__desc">Dashboard, alerts, map, catalog</span></li>
+                <li class="arch__node arch__node--auth"><span class="arch__name">Auth0</span><span class="arch__desc">JWT authentication</span></li>
+                <li class="arch__node arch__node--api"><span class="arch__name">Django REST API</span><span class="arch__desc">Stock, movements, imports</span></li>
+                <li class="arch__node arch__node--ml"><span class="arch__name">ML pipeline</span><span class="arch__desc">LightGBM per segment, weekly run</span></li>
+                <li class="arch__node arch__node--db"><span class="arch__name">MySQL 8</span><span class="arch__desc">Workshops, parts, stock</span></li>
+                <li class="arch__node arch__node--alerts"><span class="arch__name">Alerts &amp; KPIs</span><span class="arch__desc">Stock-out, low stock, overstock</span></li>
+              </ul>
+              <p class="arch__infra">Deployment stack: AWS, Nginx, Gunicorn</p>
+              <figcaption id="arch-caption" class="visually-hidden">StockifAI2 architecture, drawn from the project documentation.</figcaption>
+            </figure>
+          </div>
+
+          <details class="card-details">
+            <summary>Full details<span class="visually-hidden"> for StockifAI2</span></summary>
+            <dl class="details-list details-list--wide">
+              <div><dt>Problem</dt>
+                <dd>In automotive workshops and dealerships, too many spare parts tie up money and become obsolete, while too few leave cars waiting for a part.</dd></div>
+              <div><dt>Solution</dt>
+                <dd>
+                  <p>A complete web product that centralizes the stock of one or several workshops, predicts weekly demand per spare part for the next 4 weeks and raises automatic alerts for imminent stock-outs, low stock and overstock.</p>
+                  <p>Features include an inventory dashboard with KPIs and Excel reports, rotation classification for each part, a map to locate which workshop in the group has a part in stock, a parts catalog, bulk stock import from Excel, and workshops, groups and users with roles.</p>
+                  <p>The ML pipeline segments parts into frequent and intermittent sellers, builds lag, rolling-window, calendar (including Argentine holidays) and macroeconomic features, trains one LightGBM model per segment with time-ordered validation and rolling forecasts, and runs automatically every week or on demand through the API.</p>
+                </dd></div>
+              <div><dt>Technologies</dt>
+                <dd>
+                  <ul class="stack">
+                    <li><span class="stack__layer">Frontend:</span> Angular 18, Bootstrap 5, Chart.js, Leaflet</li>
+                    <li><span class="stack__layer">Backend:</span> Django 5, Django REST Framework, django-crontab</li>
+                    <li><span class="stack__layer">Machine learning:</span> LightGBM, scikit-learn, pandas, NumPy</li>
+                    <li><span class="stack__layer">Database:</span> MySQL 8</li>
+                    <li><span class="stack__layer">Authentication:</span> Auth0 (JWT)</li>
+                    <li><span class="stack__layer">Infrastructure:</span> AWS, Nginx, Gunicorn</li>
+                  </ul>
+                </dd></div>
+              <div><dt>Status</dt>
+                <dd>Final degree project — Information Systems Engineering, UTN.</dd>
+                <!-- PENDING: year of the project and the owner's role within the team
+                     (the README leaves "[Facultad Regional]" and "[año]" as placeholders). --></div>
+            </dl>
+          </details>
+
+          <ul class="card-links">
+            <li><a class="link-button" href="https://github.com/agtorres1/StockifAI2">GitHub repository<span class="visually-hidden"> for StockifAI2</span></a></li>
+            <!-- No public demo URL found. The repo includes a landing-page folder;
+                 add a link here only once it is published and verified.
+                 Real screenshots exist in that repository but are not in the local files,
+                 so none are shown here. -->
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== EDUCATION ===================== -->
+    <section id="education" class="section section--split" aria-labelledby="education-title">
+      <h2 id="education-title" class="section__title">Education</h2>
+
+      <div class="section__body">
+        <ul class="entries">
+          <li class="entry-card spotlight reveal">
+            <svg class="entry-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 9.5 12 5l10 4.5-10 4.5L2 9.5Z"/><path d="M6 11.3V16c0 1.2 2.7 2.5 6 2.5s6-1.3 6-2.5v-4.7"/></svg>
+            <div>
+              <p class="entry__title">Information Systems Engineering — Universidad Tecnológica Nacional, Facultad Regional Buenos Aires (UTN FRBA)</p>
+              <p class="entry__meta"><span class="status-chip status-chip--progress">Degree in progress</span> 2020 – 2026 (expected December 2026)</p>
+            </div>
+          </li>
+        </ul>
+
+        <h3>Training &amp; Certifications</h3>
+        <ul class="entries">
+          <li class="entry-card spotlight reveal">
+            <div>
+              <p class="entry__title">Data Analysis — Talento Tech</p>
+              <p class="entry__meta"><span class="status-chip status-chip--progress">In progress</span></p>
+            </div>
+          </li>
+          <li class="entry-card spotlight reveal">
+            <div>
+              <p class="entry__title">Microsoft AI-300: Operationalizing Machine Learning and Generative AI Solutions</p>
+              <p class="entry__meta"><span class="status-chip status-chip--progress">Preparing</span></p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="contact-card reveal">
+        <h2 id="contact-title" class="section__title">Contact</h2>
+        <ul class="contact-list">
+          <li><a class="contact-link" href="https://github.com/agtorres1">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></svg>
+            <span>GitHub — agtorres1</span></a></li>
+          <li><a class="contact-link" href="mailto:mica.agus177.mt@gmail.com">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+            <span>Email — mica.agus177.mt@gmail.com</span></a></li>
+          <li><a class="contact-link" href="https://www.linkedin.com/in/agustina-torres-83513a188/">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>
+            <span>LinkedIn — Agustina Torres</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer id="footer" class="site-footer">
+    <div class="site-footer__inner">
+      <p>&copy; 2026 Agustina Torres</p>
+      <p><a href="https://github.com/agtorres1">GitHub</a></p>
+      <p><a href="#header">Back to top</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

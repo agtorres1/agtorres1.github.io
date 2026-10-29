@@ -1,0 +1,1627 @@
+/* ==========================================================================
+   Agustina Torres — Portfolio
+   Design v3 · modern interactive portfolio with bento grids
+   Mobile-first: base styles target phones; media queries add columns.
+
+   1. Tokens
+   2. Base
+   3. Utilities & accessibility
+   4. Header & navigation
+   5. Buttons, chips & tags
+   6. Hero & pipeline
+   7. Sections
+   8. Skills bento
+   9. Projects bento & cards
+   10. Project diagrams (SVG)
+   11. Architecture diagram (StockifAI2)
+   12. Education, contact & footer
+   13. Breakpoints
+   14. Motion
+   ========================================================================== */
+
+/* 1. Tokens ---------------------------------------------------------------- */
+:root {
+  /* Ink and amber, with layered surfaces for depth */
+  --ink:          #0F1B2A;
+  --ink-deep:     #0B1521;
+  --surface:      #142335;
+  --surface-2:    #182A3F;
+  --line:         #2A4058;
+  --line-strong:  #3A5573;
+  --edge:         rgba(164, 177, 190, 0.14);
+  --paper:        #ECE7DC;
+  --paper-dim:    #CDD4DB;
+  --mist:         #A4B1BE;
+  --amber:        #F2B65E;
+  --amber-glow:   rgba(242, 182, 94, 0.14);
+  --sage:         #9CC9A8;
+  --steel:        #8FB3D9;
+
+  /* Type: system faces only, so the page renders offline with no web fonts */
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", "URW Palladio L", "P052", Georgia, serif;
+  --font-body: Seravek, "Gill Sans Nova", Ubuntu, Calibri, "DejaVu Sans", "Segoe UI", system-ui, sans-serif;
+
+  /* Fluid scale (375px → 1440px) */
+  --step--2: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);     /* 13 → 14px  micro labels */
+  --step--1: clamp(0.9375rem, 0.9rem + 0.15vw, 1.0625rem);    /* 15 → 17px  meta */
+  --step-0:  clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);       /* 17 → 19px  body */
+  --step-1:  clamp(1.1875rem, 1.1rem + 0.4vw, 1.375rem);      /* 19 → 22px  lead */
+  --step-2:  clamp(1.375rem, 1.2rem + 0.75vw, 1.875rem);      /* 22 → 30px  card titles */
+  --step-3:  clamp(1.875rem, 1.5rem + 1.3vw, 2.625rem);       /* 30 → 42px  section titles */
+  --step-hero: clamp(3.25rem, 0.5rem + 8vw, 7.75rem);         /* 52 → 124px name */
+
+  /* Space & layout */
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --page-max: 80rem;
+  --measure: 68ch;
+  --section-pad: clamp(4rem, 3rem + 4vw, 7rem);
+  --header-h: 4.5rem;
+
+  --radius-s: 6px;
+  --radius-m: 12px;
+  --radius-l: 20px;
+
+  --shadow-card: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 24px 48px -30px rgba(0, 0, 0, 0.75);
+  --shadow-lift: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 32px 60px -28px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(242, 182, 94, 0.12);
+}
+
+/* 2. Base ------------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--paper);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.65;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  /* Two very soft light sources give the page depth without decoration */
+  background:
+    radial-gradient(70rem 40rem at 90% -10%, rgba(242, 182, 94, 0.07), transparent 60%),
+    radial-gradient(60rem 40rem at -15% 35%, rgba(143, 179, 217, 0.06), transparent 60%),
+    var(--ink);
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  text-wrap: balance;
+  overflow-wrap: normal;
+}
+
+p, ul, ol, dl, dd, figure {
+  margin: 0;
+}
+
+ul, ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: var(--amber);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+a:hover {
+  color: var(--paper);
+  text-decoration-color: var(--amber);
+}
+
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--amber);
+  color: var(--ink);
+}
+
+[id] {
+  scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+
+/* 3. Utilities & accessibility --------------------------------------------- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  background: var(--amber);
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius-s);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+.skip-link:hover {
+  color: var(--ink);
+}
+
+/* Cursor-following light on cards (position set by script.js; static without it) */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(28rem circle at var(--mx, 50%) var(--my, 0%), rgba(242, 182, 94, 0.09), transparent 45%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.spotlight:hover::before,
+.spotlight:focus-within::before {
+  opacity: 1;
+}
+
+/* 4. Header & navigation --------------------------------------------------- */
+.site-header {
+  position: relative;
+  z-index: 50;
+  background: rgba(15, 27, 42, 0.92);
+  border-bottom: 1px solid var(--edge);
+}
+
+.site-header__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding: 0.9rem var(--gutter) 0.5rem;
+}
+
+.brand a {
+  display: inline-block;
+  padding-block: 0.35rem;
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.brand a:hover {
+  color: var(--amber);
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.1rem;
+}
+
+.site-nav a {
+  position: relative;
+  display: inline-block;
+  padding-block: 0.5rem;
+  color: var(--paper-dim);
+  font-size: var(--step--1);
+  text-decoration: none;
+}
+
+/* Underline grows from the left on hover and marks the current section */
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.3rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--amber);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="true"] {
+  color: var(--paper);
+}
+
+.site-nav a:hover::after,
+.site-nav a[aria-current="true"]::after {
+  transform: scaleX(1);
+}
+
+/* 5. Buttons, chips & tags ------------------------------------------------- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: var(--step--1);
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button--primary {
+  background: var(--amber);
+  color: var(--ink);
+  box-shadow: 0 10px 30px -12px rgba(242, 182, 94, 0.55);
+}
+
+.button--primary:hover {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.button--secondary {
+  border-color: var(--line-strong);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--paper);
+}
+
+.button--secondary:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.button--ghost {
+  color: var(--paper-dim);
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+}
+
+.button--ghost:hover {
+  color: var(--amber);
+  text-decoration-color: var(--amber);
+}
+
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.22rem 0.7rem 0.22rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(164, 177, 190, 0.08);
+  color: var(--paper-dim);
+  font-size: var(--step--2);
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.status-chip::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--mist);
+}
+
+.status-chip--progress {
+  border-color: rgba(242, 182, 94, 0.45);
+  background: rgba(242, 182, 94, 0.1);
+  color: var(--amber);
+}
+
+.status-chip--progress::before {
+  background: var(--amber);
+  box-shadow: 0 0 0 3px rgba(242, 182, 94, 0.18);
+}
+
+.status-chip--done {
+  border-color: rgba(156, 201, 168, 0.45);
+  background: rgba(156, 201, 168, 0.1);
+  color: var(--sage);
+}
+
+.status-chip--done::before {
+  background: var(--sage);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tags li {
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--paper-dim);
+  font-size: var(--step--2);
+  line-height: 1.5;
+}
+
+/* 6. Hero & pipeline ------------------------------------------------------- */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Faint dot grid, like the canvas of an entity-relationship diagram (decorative) */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(circle, rgba(164, 177, 190, 0.24) 1px, transparent 1.6px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 85% 35%, #000 10%, transparent 72%);
+  mask-image: radial-gradient(ellipse 70% 80% at 85% 35%, #000 10%, transparent 72%);
+}
+
+.hero__inner {
+  display: grid;
+  gap: clamp(2.5rem, 2rem + 3vw, 4rem);
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding: clamp(3.5rem, 2.5rem + 6vw, 8rem) var(--gutter) clamp(3.5rem, 2.5rem + 4vw, 6.5rem);
+}
+
+.hero__name {
+  width: min-content;
+  max-width: 100%;
+  font-size: var(--step-hero);
+  line-height: 0.92;
+  letter-spacing: -0.025em;
+}
+
+.hero__role {
+  margin-top: 1.75rem;
+  padding-left: 1.1rem;
+  border-left: 3px solid var(--amber);
+  font-size: var(--step-2);
+  line-height: 1.3;
+}
+
+.hero__intro {
+  max-width: 44ch;
+  margin-top: 1.25rem;
+  color: var(--paper-dim);
+  font-size: var(--step-1);
+  line-height: 1.6;
+}
+
+.hero__focus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.hero__focus li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--paper);
+  font-size: var(--step--1);
+}
+
+.hero__focus li::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--amber);
+}
+
+.hero__focus li:nth-child(2)::before { background: var(--steel); }
+.hero__focus li:nth-child(3)::before { background: var(--sage); }
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+/* Pipeline: a real ordered list drawn as a vertical data flow */
+.pipeline {
+  align-self: center;
+  padding: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  border: 1px solid var(--edge);
+  border-radius: var(--radius-l);
+  background: linear-gradient(160deg, rgba(24, 42, 63, 0.92), rgba(11, 21, 33, 0.92));
+  box-shadow: var(--shadow-card);
+}
+
+.pipeline__caption {
+  margin-bottom: 1.1rem;
+  color: var(--mist);
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+
+.pipeline__steps {
+  position: relative;
+  display: grid;
+  gap: 0.8rem;
+}
+
+/* The connecting line */
+.pipeline__steps::before {
+  content: "";
+  position: absolute;
+  left: 11px;
+  top: 1.2rem;
+  bottom: 1.2rem;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(var(--amber), rgba(242, 182, 94, 0.15));
+}
+
+/* A small packet travels down the line (only when motion is allowed) */
+.pipeline__steps::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 1rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 0 4px rgba(242, 182, 94, 0.2);
+  opacity: 0;
+}
+
+.pipeline__step {
+  position: relative;
+  margin-left: 2rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(164, 177, 190, 0.12);
+  border-radius: var(--radius-m);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.pipeline__step::before {
+  content: "";
+  position: absolute;
+  left: -27px;
+  top: 1.05rem;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--amber);
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.pipeline__title {
+  display: block;
+  color: var(--paper);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.pipeline__detail {
+  display: block;
+  color: var(--mist);
+  font-size: var(--step--1);
+  line-height: 1.45;
+}
+
+/* 7. Sections -------------------------------------------------------------- */
+.section {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding: var(--section-pad) var(--gutter);
+}
+
+.section__title {
+  font-size: var(--step-3);
+}
+
+.section__lede {
+  max-width: 60ch;
+  margin-top: 0.9rem;
+  color: var(--mist);
+  font-size: var(--step--1);
+}
+
+.section > .section__title + .skills-bento,
+.section__lede + .bento {
+  margin-top: clamp(1.75rem, 1.25rem + 1.5vw, 2.75rem);
+}
+
+.section--split {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.section__body {
+  min-width: 0;
+}
+
+.prose {
+  max-width: var(--measure);
+}
+
+.prose p {
+  color: var(--paper-dim);
+  line-height: 1.75;
+}
+
+.prose p + p {
+  margin-top: 1.4em;
+}
+
+.prose p:first-child {
+  color: var(--paper);
+  font-size: var(--step-1);
+  line-height: 1.55;
+}
+
+/* 8. Skills bento ---------------------------------------------------------- */
+.skills-bento {
+  display: grid;
+  gap: 1rem;
+}
+
+.skill-card {
+  padding: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  border: 1px solid var(--edge);
+  border-radius: var(--radius-l);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01)), var(--surface);
+  box-shadow: var(--shadow-card);
+}
+
+.skill-card__icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0.45rem;
+  margin-bottom: 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  fill: none;
+  stroke: var(--amber);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  background: rgba(242, 182, 94, 0.06);
+}
+
+.skill-card--ml .skill-card__icon,
+.skill-card--code .skill-card__icon { stroke: var(--steel); background: rgba(143, 179, 217, 0.07); }
+.skill-card--cloud .skill-card__icon,
+.skill-card--web .skill-card__icon { stroke: var(--sage); background: rgba(156, 201, 168, 0.07); }
+
+.skill-card h3 {
+  margin-bottom: 0.9rem;
+  font-size: var(--step-1);
+}
+
+.skill-list li {
+  position: relative;
+  padding-left: 1.2rem;
+  color: var(--paper-dim);
+  font-size: var(--step--1);
+  line-height: 1.55;
+}
+
+.skill-list li + li {
+  margin-top: 0.6rem;
+}
+
+.skill-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 0.5rem;
+  height: 1px;
+  background: var(--amber);
+}
+
+/* 9. Projects bento & cards ------------------------------------------------ */
+.bento {
+  display: grid;
+  gap: 1rem;
+}
+
+.bento-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+  padding: clamp(1.15rem, 0.9rem + 1.1vw, 1.9rem);
+  border: 1px solid var(--edge);
+  border-radius: var(--radius-l);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01)), var(--surface);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.bento-card:focus-within {
+  border-color: rgba(242, 182, 94, 0.35);
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 0.75rem;
+}
+
+.card-kicker {
+  color: var(--mist);
+  font-size: var(--step--2);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.card-title {
+  font-size: var(--step-2);
+  line-height: 1.15;
+}
+
+.card-title--large {
+  font-size: var(--step-3);
+}
+
+.card-problem {
+  color: var(--paper);
+  font-size: var(--step-1);
+  line-height: 1.45;
+}
+
+.card-summary {
+  color: var(--paper-dim);
+  font-size: var(--step--1);
+  line-height: 1.65;
+}
+
+.note {
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgba(242, 182, 94, 0.35);
+  border-radius: var(--radius-m);
+  background: rgba(242, 182, 94, 0.06);
+  color: var(--paper-dim);
+  font-size: var(--step--2);
+  line-height: 1.55;
+}
+
+.note strong {
+  color: var(--amber);
+}
+
+/* Visual area of each card */
+.card-visual {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0.75rem;
+  border: 1px solid rgba(164, 177, 190, 0.1);
+  border-radius: var(--radius-m);
+  background:
+    radial-gradient(circle, rgba(164, 177, 190, 0.12) 1px, transparent 1.5px) 0 0 / 18px 18px,
+    var(--ink-deep);
+}
+
+.concept-tag {
+  justify-self: end;
+  padding: 0.1rem 0.55rem;
+  border: 1px dashed var(--line-strong);
+  border-radius: 999px;
+  color: var(--mist);
+  font-size: var(--step--2);
+  line-height: 1.5;
+}
+
+/* Stage track: what is implemented vs pending */
+.stage-track {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.stage {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: var(--step--2);
+  line-height: 1.5;
+}
+
+.stage::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+}
+
+.stage--done {
+  border: 1px solid rgba(156, 201, 168, 0.5);
+  background: rgba(156, 201, 168, 0.1);
+  color: var(--sage);
+}
+
+.stage--done::before {
+  background: var(--sage);
+}
+
+.stage--pending {
+  border: 1px dashed var(--line-strong);
+  color: var(--mist);
+}
+
+.stage--pending::before {
+  border: 1px solid var(--mist);
+}
+
+/* Expandable full details: native <details>, works without JavaScript */
+.card-details {
+  border-top: 1px solid var(--edge);
+  padding-top: 0.25rem;
+}
+
+.card-details summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 2.75rem;
+  color: var(--paper);
+  font-size: var(--step--1);
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.card-details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Chevron */
+.card-details summary::after {
+  content: "";
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-right: 0.3rem;
+  border-right: 2px solid var(--amber);
+  border-bottom: 2px solid var(--amber);
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.25s ease;
+}
+
+.card-details[open] summary::after {
+  transform: translateY(2px) rotate(-135deg);
+}
+
+.card-details summary:hover {
+  color: var(--amber);
+}
+
+.details-note {
+  margin-top: 0.5rem;
+  color: var(--paper-dim);
+  font-size: var(--step--1);
+}
+
+.details-list {
+  display: grid;
+  gap: 1.1rem;
+  padding: 0.75rem 0 0.5rem;
+}
+
+.details-list dt {
+  margin-bottom: 0.3rem;
+  color: var(--mist);
+  font-size: var(--step--2);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.details-list dd {
+  color: var(--paper-dim);
+  font-size: var(--step--1);
+  line-height: 1.7;
+}
+
+.details-list dd p + p {
+  margin-top: 0.8em;
+}
+
+.stack li {
+  padding-block: 0.45rem;
+  border-bottom: 1px solid var(--edge);
+}
+
+.stack li:last-child {
+  border-bottom: 0;
+}
+
+.stack__layer {
+  color: var(--paper);
+  font-weight: 600;
+}
+
+/* Featured product card: text, then diagram (two columns from 1152px) */
+.product-layout {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.product-layout__text {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+/* Links sit at the bottom of every card */
+.card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: auto;
+}
+
+.link-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.5rem 1.05rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--paper);
+  font-size: var(--step--1);
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.link-button:hover {
+  border-color: var(--amber);
+  background: rgba(242, 182, 94, 0.08);
+  color: var(--amber);
+}
+
+.link-button--accent {
+  border-color: rgba(242, 182, 94, 0.5);
+  color: var(--amber);
+}
+
+/* 10. Project diagrams (SVG) ----------------------------------------------- */
+.diagram {
+  display: block;
+  width: 100%;
+  max-width: 30rem;      /* keeps labels at a readable size on wide cards */
+  margin-inline: auto;
+  height: auto;
+  font-family: var(--font-body);
+  overflow: visible;
+}
+
+.diagram text {
+  fill: var(--paper-dim);
+  font-size: 13px;
+  font-weight: 600;
+  text-anchor: middle;
+}
+
+.dg-lines path,
+.dg-arrow,
+.dg-loop {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.dg-arrow {
+  stroke: rgba(242, 182, 94, 0.75);
+  stroke-dasharray: 4 4;
+}
+
+.dg-loop {
+  stroke: var(--mist);
+  stroke-dasharray: 3 4;
+}
+
+.dg-box rect,
+.dg-sheet rect,
+.dg-cyl path,
+.dg-cyl ellipse,
+.dg-gate path,
+.dg-dash rect:first-child {
+  fill: var(--surface);
+  stroke: var(--line-strong);
+  stroke-width: 1.25;
+}
+
+.dg-box--key rect,
+.dg-cyl path,
+.dg-cyl ellipse {
+  stroke: var(--amber);
+}
+
+.dg-gate path {
+  stroke: var(--sage);
+}
+
+.dg-sheet path {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.dg-dash rect:not(:first-child) {
+  fill: rgba(164, 177, 190, 0.22);
+}
+
+.diagram .dg-small {
+  fill: var(--mist);
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.diagram .dg-label {
+  fill: var(--mist);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.diagram .dg-label--accent {
+  fill: var(--amber);
+}
+
+.diagram .dg-label--end {
+  text-anchor: end;
+}
+
+.dg-axis {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 1.25;
+}
+
+.dg-band {
+  fill: rgba(242, 182, 94, 0.14);
+}
+
+.dg-series {
+  fill: none;
+  stroke: var(--paper-dim);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.dg-forecast {
+  fill: none;
+  stroke: var(--amber);
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+  stroke-linejoin: round;
+}
+
+.dg-today {
+  fill: none;
+  stroke: var(--mist);
+  stroke-dasharray: 2 4;
+}
+
+/* Below the wide bento, diagrams render smaller, so their labels scale up to stay legible */
+@media (max-width: 40rem) {
+  .card-visual {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 71.99rem) {
+  .diagram text {
+    font-size: 14px;
+  }
+
+  .diagram .dg-small {
+    font-size: 12.5px;
+  }
+
+  .diagram .dg-label {
+    font-size: 13.5px;
+  }
+}
+
+/* 11. Architecture diagram (StockifAI2) ------------------------------------ */
+.arch {
+  --col-gap: 1.6rem;
+  --row-gap: 1.4rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas:
+    "client auth"
+    "api    ml"
+    "db     alerts";
+  gap: var(--row-gap) var(--col-gap);
+}
+
+.arch__node {
+  position: relative;
+  display: grid;
+  align-content: center;
+  gap: 0.15rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+}
+
+.arch__node--client { grid-area: client; }
+.arch__node--auth   { grid-area: auth; }
+.arch__node--api    { grid-area: api; border-color: rgba(242, 182, 94, 0.6); }
+.arch__node--ml     { grid-area: ml; border-color: rgba(143, 179, 217, 0.6); }
+.arch__node--db     { grid-area: db; }
+.arch__node--alerts { grid-area: alerts; }
+
+.arch__name {
+  color: var(--paper);
+  font-size: var(--step--1);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.arch__desc {
+  color: var(--mist);
+  font-size: var(--step--2);
+  line-height: 1.4;
+}
+
+/* Connectors: vertical client → api → db and ml → alerts; horizontal auth ↔ client and api ↔ ml */
+.arch__node--client::after,
+.arch__node--api::after,
+.arch__node--ml::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 2px;
+  height: var(--row-gap);
+  background: linear-gradient(var(--line-strong), var(--amber));
+}
+
+.arch__node--auth::before,
+.arch__node--ml::before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  width: var(--col-gap);
+  height: 2px;
+  background: linear-gradient(90deg, var(--amber), var(--line-strong));
+}
+
+.arch__infra {
+  margin-top: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-m);
+  color: var(--mist);
+  font-size: var(--step--2);
+  text-align: center;
+}
+
+/* 12. Education, contact & footer ------------------------------------------ */
+.entry-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  max-width: var(--measure);
+  padding: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  border: 1px solid var(--edge);
+  border-radius: var(--radius-l);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01)), var(--surface);
+  box-shadow: var(--shadow-card);
+}
+
+.entry-card__icon {
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  fill: none;
+  stroke: var(--amber);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  background: rgba(242, 182, 94, 0.06);
+}
+
+.entry__title {
+  font-size: var(--step-1);
+  line-height: 1.45;
+}
+
+.entry__meta {
+  margin-top: 0.75rem;
+}
+
+.contact-card {
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(1.5rem, 1rem + 2.5vw, 3.5rem);
+  border: 1px solid var(--edge);
+  border-radius: var(--radius-l);
+  background:
+    radial-gradient(40rem 20rem at 100% 0%, rgba(242, 182, 94, 0.1), transparent 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01)),
+    var(--surface);
+  box-shadow: var(--shadow-card);
+}
+
+.contact-list {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-height: 3.25rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--paper);
+  font-size: var(--step-0);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.contact-link svg {
+  flex: none;
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: none;
+  stroke: var(--amber);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contact-link:hover {
+  border-color: var(--amber);
+  background: rgba(242, 182, 94, 0.08);
+  color: var(--amber);
+}
+
+.site-footer {
+  border-top: 1px solid var(--edge);
+  background: var(--ink-deep);
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 2rem;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding: 2.25rem var(--gutter);
+  color: var(--mist);
+  font-size: var(--step--1);
+}
+
+.site-footer__inner p:first-child {
+  flex-basis: 100%;
+}
+
+.site-footer a {
+  display: inline-block;
+  padding-block: 0.35rem;
+  color: var(--mist);
+}
+
+.site-footer a:hover {
+  color: var(--amber);
+}
+
+/* 13. Breakpoints ---------------------------------------------------------- */
+
+/* ≥ 640px: sticky header in one row */
+@media (min-width: 40rem) {
+  .site-header {
+    position: sticky;
+    top: 0;
+  }
+
+  @supports (backdrop-filter: blur(10px)) {
+    .site-header {
+      background: rgba(15, 27, 42, 0.78);
+      backdrop-filter: blur(10px);
+    }
+  }
+
+  .site-header__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    min-height: var(--header-h);
+    padding-block: 0;
+  }
+
+  .site-nav ul {
+    gap: 0.25rem 1.6rem;
+  }
+
+  .site-footer__inner p:first-child {
+    flex-basis: auto;
+    margin-right: auto;
+  }
+
+  .contact-list {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  }
+}
+
+/* ≥ 736px: two-column bentos */
+@media (min-width: 46rem) {
+  .skills-bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skill-card--data,
+  .skill-card--web {
+    grid-column: span 2;
+  }
+
+  .skill-card--data .skill-list {
+    columns: 2;
+    column-gap: 2.5rem;
+  }
+
+  .skill-card--data .skill-list li {
+    break-inside: avoid;
+  }
+
+  .bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .bento-card--sql,
+  .bento-card--forecast,
+  .bento-card--product {
+    grid-column: span 2;
+  }
+
+  .section--split {
+    grid-template-columns: minmax(14rem, 18rem) minmax(0, 1fr);
+    gap: 1.75rem clamp(2rem, 5vw, 5.5rem);
+  }
+}
+
+/* ≥ 1024px: two-column hero */
+@media (min-width: 64rem) {
+  .hero__inner {
+    grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+    align-items: center;
+    column-gap: clamp(3rem, 5vw, 5.5rem);
+  }
+}
+
+/* ≥ 1152px: asymmetric 12-column project bento, 4-column skills bento */
+@media (min-width: 72rem) {
+  .bento {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* Row 1: wide data-engineering card left, narrower one right */
+  .bento-card--sql      { grid-column: span 7; }
+  .bento-card--tsu      { grid-column: span 5; }
+  /* Row 2: mirrored, so the grid zigzags */
+  .bento-card--xsell    { grid-column: span 5; }
+  .bento-card--forecast { grid-column: span 7; }
+  /* Row 3: the end-to-end product takes the full width */
+  .bento-card--product  { grid-column: 1 / -1; }
+
+  .product-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .details-list--wide {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2.5rem;
+  }
+
+  .skills-bento {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  /* Row 1: the two core areas side by side; row 2: four supporting areas */
+  .skill-card--data,
+  .skill-card--ml    { grid-column: span 2; }
+  .skill-card--cloud,
+  .skill-card--code,
+  .skill-card--bi,
+  .skill-card--web   { grid-column: span 1; }
+
+  .skill-card--data .skill-list {
+    columns: 1;
+  }
+}
+
+/* 14. Motion --------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Hero settles in once on load */
+  .hero__text > *,
+  .pipeline {
+    animation: settle 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .hero__role    { animation-delay: 0.06s; }
+  .hero__intro   { animation-delay: 0.12s; }
+  .hero__focus   { animation-delay: 0.18s; }
+  .hero__actions { animation-delay: 0.24s; }
+  .pipeline      { animation-delay: 0.3s; }
+
+  /* The data packet travels the pipeline */
+  .pipeline__steps::after {
+    animation: packet 4.5s cubic-bezier(0.45, 0, 0.25, 1) 1.2s infinite;
+  }
+
+  /* Diagram flows move only while the card is hovered or focused */
+  .bento-card:hover .dg-arrow,
+  .bento-card:focus-within .dg-arrow {
+    animation: flow 0.9s linear infinite;
+  }
+
+  /* Lift on hover (pointer devices) */
+  @media (hover: hover) {
+    .bento-card:hover,
+    .skill-card:hover,
+    .entry-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(242, 182, 94, 0.32);
+      box-shadow: var(--shadow-lift);
+    }
+
+    .skill-card,
+    .entry-card {
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .button--primary:hover,
+    .button--secondary:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  /* Progressive reveal: only applied when script.js has run (adds .js) */
+  .js .reveal {
+    opacity: 0;
+    translate: 0 18px;
+    transition: opacity 0.6s ease var(--reveal-delay, 0s), translate 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0s),
+      transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .js .reveal.is-visible {
+    opacity: 1;
+    translate: none;
+  }
+
+  .bento > :nth-child(2),
+  .skills-bento > :nth-child(2) { --reveal-delay: 0.08s; }
+  .bento > :nth-child(3),
+  .skills-bento > :nth-child(3) { --reveal-delay: 0.04s; }
+  .bento > :nth-child(4),
+  .skills-bento > :nth-child(4) { --reveal-delay: 0.12s; }
+  .skills-bento > :nth-child(5) { --reveal-delay: 0.08s; }
+  .skills-bento > :nth-child(6) { --reveal-delay: 0.16s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes packet {
+  0%   { top: 1rem; opacity: 0; }
+  10%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { top: calc(100% - 1.6rem); opacity: 0; }
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+
+/* 14. Language switch & training list -------------------------------------- */
+.lang-switch {
+  position: absolute;
+  top: 0.95rem;
+  right: var(--gutter);
+  display: flex;
+  gap: 0.3rem;
+  font-size: var(--step--2);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.lang-switch a,
+.lang-switch span {
+  display: inline-block;
+  min-width: 2.6rem;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--paper-dim);
+  text-align: center;
+  text-decoration: none;
+}
+
+.lang-switch a:hover,
+.lang-switch a:focus-visible {
+  border-color: var(--amber);
+  color: var(--paper);
+}
+
+.lang-switch [aria-current="page"] {
+  border-color: var(--amber);
+  background: var(--amber);
+  color: var(--ink);
+}
+
+@media (min-width: 40rem) {
+  .lang-switch {
+    position: static;
+  }
+}
+
+.entries {
+  display: grid;
+  gap: 1rem;
+}
+
+.section__body > h3 {
+  margin: 2.5rem 0 1rem;
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 600;
+}
+
+/* 15. Screenshot card (Power BI dashboard) ---------------------------------- */
+.card-visual--shot {
+  gap: 0.6rem;
+  background: var(--ink-deep);
+}
+
+.card-visual--shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-s);
+  border: 1px solid rgba(164, 177, 190, 0.18);
+}
+
+.shot-main,
+.shot-thumbs a {
+  display: block;
+  border-radius: var(--radius-s);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.shot-main:hover,
+.shot-main:focus-visible,
+.shot-thumbs a:hover,
+.shot-thumbs a:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 2px var(--amber);
+}
+
+.shot-thumbs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.shot-caption {
+  color: var(--mist);
+  font-size: var(--step--2);
+}
+
+.shot-findings {
+  display: grid;
+  gap: 0.45rem;
+  margin: 1rem 0;
+  padding-left: 1.1rem;
+  color: var(--paper-dim);
+  font-size: var(--step--1);
+  list-style: disc;
+}
+
+.shot-findings li::marker {
+  color: var(--amber);
+}
+
+@media (min-width: 46rem) {
+  .bento-card--bi { grid-column: span 2; }
+}
+
+@media (min-width: 72rem) {
+  .bento-card--bi { grid-column: 1 / -1; }
+}
