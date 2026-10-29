@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Agustina Torres — portfolio de Ingeniería de Datos, Ciencia de Datos, Machine Learning y Cloud.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0F1B2A">
+  <title>Agustina Torres | Ingeniería de Datos, Ciencia de Datos y ML</title>
+  <link rel="alternate" hreflang="en" href="../">
+  <link rel="alternate" hreflang="es" href="./">
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Mejora progresiva (aparición al hacer scroll, foco en tarjetas, navegación activa).
+       La página funciona completa sin este script. -->
+  <script src="../script.js" defer></script>
+</head>
+<body>
+
+  <!-- Accessibility: lets keyboard and screen-reader users jump straight to the content. -->
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+  <!-- ===================== HEADER & NAVIGATION ===================== -->
+  <header id="header" class="site-header">
+    <div class="site-header__inner">
+      <p class="brand"><a href="#hero">Agustina Torres</a></p>
+
+      <nav class="site-nav" aria-label="Navegación principal">
+        <ul>
+          <li><a href="#about">Sobre mí</a></li>
+          <li><a href="#skills">Habilidades</a></li>
+          <li><a href="#projects">Proyectos</a></li>
+          <li><a href="#education">Formación</a></li>
+          <li><a href="#contact">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <p class="lang-switch" aria-label="Idioma">
+        <a href="../index.html" hreflang="en" lang="en" title="View in English">EN</a>
+        <span aria-current="page" lang="es">ES</span>
+      </p>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ===================== HERO / INTRODUCTION ===================== -->
+    <section id="hero" class="hero" aria-labelledby="hero-title">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <h1 id="hero-title" class="hero__name">Agustina Torres</h1>
+          <p class="hero__role">Data Engineer y Machine Learning Engineer en formación</p>
+          <p class="hero__intro">Estudiante de Ingeniería en Sistemas de Información en la UTN FRBA. Hago proyectos que convierten datos desordenados en modelos, pipelines y herramientas confiables para tomar decisiones.</p>
+
+          <ul class="hero__focus" aria-label="Áreas de foco">
+            <li>Ingeniería de datos</li>
+            <li>Machine Learning</li>
+            <li>Cloud</li>
+          </ul>
+
+          <p class="hero__actions">
+            <a class="button button--primary" href="#projects">Ver proyectos</a>
+            <a class="button button--secondary" href="https://github.com/agtorres1">Perfil de GitHub</a>
+            <a class="button button--ghost" href="#contact">Contacto</a>
+            <!-- PENDIENTE: agregar el link "Descargar CV" cuando haya un archivo. -->
+          </p>
+        </div>
+
+        <!-- Pipeline conceptual: cómo se conectan los proyectos. Texto real, no imagen. -->
+        <figure class="pipeline" aria-labelledby="pipeline-caption">
+          <figcaption id="pipeline-caption" class="pipeline__caption">Cómo se conectan mis proyectos</figcaption>
+          <ol class="pipeline__steps">
+            <li class="pipeline__step">
+              <span class="pipeline__title">Fuentes desordenadas</span>
+              <span class="pipeline__detail">Tablas planas y planillas inconsistentes</span>
+            </li>
+            <li class="pipeline__step">
+              <span class="pipeline__title">Limpiar y modelar</span>
+              <span class="pipeline__detail">Resolución de identidades, normalización, SQL</span>
+            </li>
+            <li class="pipeline__step">
+              <span class="pipeline__title">Entrenar y evaluar</span>
+              <span class="pipeline__detail">scikit-learn, LightGBM</span>
+            </li>
+            <li class="pipeline__step">
+              <span class="pipeline__title">Llevar a la nube</span>
+              <span class="pipeline__detail">Azure Machine Learning, AWS</span>
+            </li>
+          </ol>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===================== ABOUT ME ===================== -->
+    <section id="about" class="section section--split" aria-labelledby="about-title">
+      <h2 id="about-title" class="section__title">Sobre mí</h2>
+      <div class="section__body prose reveal">
+        <p>Soy estudiante de Ingeniería en Sistemas de Información en la UTN FRBA (Universidad Tecnológica Nacional, Facultad Regional Buenos Aires).</p>
+        <p>Mis proyectos ponen primero el modelado y la calidad de los datos: migrar y normalizar fuentes inconsistentes, resolver identidades duplicadas y validar los resultados. Sobre esa base trabajo en machine learning (clasificación y pronóstico de demanda) y en llevar los modelos a la nube con Azure Machine Learning.</p>
+        <!-- PENDING: personal bio, professional experience, location, languages and interests.
+             Not documented in the public GitHub profile — to be provided by the owner. -->
+        <!-- PENDING: optional profile photo. -->
+      </div>
+    </section>
+
+    <!-- ===================== TECHNICAL SKILLS ===================== -->
+    <section id="skills" class="section" aria-labelledby="skills-title">
+      <h2 id="skills-title" class="section__title">Habilidades técnicas</h2>
+      <!-- Source: technologies documented in the public repositories listed in #projects,
+           plus knowledge confirmed by the owner (T-SQL DML and views; dimensional modeling). -->
+
+      <div class="skills-bento">
+        <div class="skill-card skill-card--data spotlight reveal">
+          <svg class="skill-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13"/><path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/></svg>
+          <h3>Ingeniería de datos y bases de datos</h3>
+          <ul class="skill-list">
+            <li>SQL Server 2019 y T-SQL (DDL, DML, stored procedures, vistas)</li>
+            <li>SQL Server Management Studio</li>
+            <li>MySQL 8</li>
+            <li>Modelado relacional y normalización</li>
+            <li>Modelado dimensional y diseño de esquemas estrella</li>
+            <li>Pipelines de datos en Python: consolidación, limpieza y carga incremental e idempotente</li>
+            <li>Limpieza de datos, resolución de identidades y validación</li>
+          </ul>
+        </div>
+
+        <div class="skill-card skill-card--ml spotlight reveal">
+          <svg class="skill-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="5" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 6.8 10.2 11M7 17.2l3.2-4.2M13.8 11 17 6.8M13.8 13l3.2 4.2"/></svg>
+          <h3>Machine Learning</h3>
+          <ul class="skill-list">
+            <li>scikit-learn y LightGBM</li>
+            <li>Clasificación: regresión logística, árboles de decisión, Random Forest, Gradient Boosting</li>
+            <li>Pronóstico de demanda con series de tiempo</li>
+            <li>Feature engineering y ajuste de hiperparámetros (RandomizedSearchCV, GridSearchCV)</li>
+            <li>Evaluación de modelos: ROC-AUC, estadístico KS, lift y ganancia, estabilidad con PSI</li>
+          </ul>
+        </div>
+
+        <div class="skill-card skill-card--cloud spotlight reveal">
+          <svg class="skill-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 18h10.5a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.6 9.2 4.5 4.5 0 0 0 7 18Z"/></svg>
+          <h3>Cloud &amp; MLOps</h3>
+          <ul class="skill-list">
+            <li>Azure Machine Learning (pipelines con SDK v2, Model Registry, endpoints administrados)</li>
+            <li>MLflow tracking</li>
+            <li>AWS, Nginx y Gunicorn (stack de despliegue de StockifAI)</li>
+          </ul>
+        </div>
+
+        <div class="skill-card skill-card--code spotlight reveal">
+          <svg class="skill-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 5l-3 14"/></svg>
+          <h3>Programación y análisis de datos</h3>
+          <ul class="skill-list">
+            <li>Python (pandas, NumPy, openpyxl, matplotlib)</li>
+            <li>Jupyter Notebooks</li>
+            <li>Java y C (materias de la carrera)</li>
+          </ul>
+        </div>
+
+        <div class="skill-card skill-card--bi spotlight reveal">
+          <svg class="skill-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 9v11"/></svg>
+          <h3>BI y automatización</h3>
+          <ul class="skill-list">
+            <li>Power BI (modelado de datos, medidas DAX, tableros)</li>
+            <li>Looker Studio</li>
+            <li>Google Forms, Google Sheets y Apps Script</li>
+          </ul>
+        </div>
+
+        <div class="skill-card skill-card--web spotlight reveal">
+          <svg class="skill-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8.5h18"/><circle cx="6" cy="6.3" r=".6"/><circle cx="8.2" cy="6.3" r=".6"/></svg>
+          <h3>Desarrollo web</h3>
+          <ul class="skill-list">
+            <li>Django 5 y Django REST Framework</li>
+            <li>Angular 18</li>
+            <li>Auth0 (autenticación JWT)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROJECTS ===================== -->
+    <section id="projects" class="section" aria-labelledby="projects-title">
+      <h2 id="projects-title" class="section__title">Proyectos</h2>
+      <p class="section__lede">Seis proyectos, del modelado de datos a un producto completo. El diagrama de cada tarjeta es una ilustración conceptual del trabajo, no una captura ni un resultado.</p>
+      <!-- Order: Data Engineering & data quality → Machine Learning & Cloud → end-to-end product.
+           All content comes from each repository's README. No metrics are shown unless
+           they are reported in the README and based on real (non-synthetic) data.
+           Each card shows a short summary; the full verified text is inside <details>. -->
+
+      <div class="bento">
+
+        <!-- ---------- Enviar S.A. — Power BI dashboard (BI & Analytics) ---------- -->
+        <article id="project-enviar" class="bento-card bento-card--bi spotlight reveal" aria-labelledby="project-enviar-title">
+          <div class="product-layout">
+            <div class="product-layout__text">
+              <div class="card-meta">
+                <p class="card-kicker">Business Intelligence</p>
+                <p class="status-chip status-chip--done">Finalizado</p>
+              </div>
+              <h3 id="project-enviar-title" class="card-title card-title--large">Enviar S.A. — Tablero de ventas en Power BI</h3>
+              <p class="card-problem">Una empresa de distribución necesitaba un solo lugar para seguir ventas, márgenes, costos de envío y el desempeño de sus gerentes provinciales.</p>
+              <p class="card-summary">Reporte de Power BI de tres páginas sobre un data warehouse en estrella: KPIs contra el año anterior, un mapa de Argentina con el lucro por provincia, rankings de productos y clientes, y costos logísticos.</p>
+              <ul class="shot-findings" aria-label="Hallazgos clave">
+                <li>Mobiliario factura $5,2 M pero deja solo 2,3 % de margen, contra 14,8 % de Tecnología.</li>
+                <li>El 51 % de las líneas de venta da pérdida; con descuentos de más del 5 %, el margen cae de 11,9 % a 7,8 %.</li>
+                <li>Las ventas crecieron 7,6 % entre 2022 y 2024, con un margen estable de 10–11 %.</li>
+              </ul>
+              <ul class="tags" aria-label="Tecnologías principales">
+                <li>Power BI</li>
+                <li>DAX</li>
+                <li>Power Query</li>
+                <li>Modelo estrella</li>
+                <li>Storytelling con datos</li>
+              </ul>
+            </div>
+
+            <figure class="card-visual card-visual--shot">
+              <a class="shot-main" href="../img/enviar-resumen.jpg"><img src="../img/enviar-resumen.jpg" width="1416" height="840" loading="lazy" alt="Página Resumen del tablero de Power BI de Enviar S.A.: ventas totales de $3,69 M en 2024, KPIs de lucro, margen, órdenes y unidades, ventas por segmento y mapa de Argentina con el lucro por provincia."></a>
+              <div class="shot-thumbs">
+                <a href="../img/enviar-productos.jpg"><img src="../img/enviar-productos.jpg" width="1416" height="840" loading="lazy" alt="Página Productos y clientes: clientes activos, ticket promedio, top 10 productos, ventas y margen por categoría, top 10 clientes y margen por subcategoría."></a>
+                <a href="../img/enviar-logistica.jpg"><img src="../img/enviar-logistica.jpg" width="1416" height="840" loading="lazy" alt="Página Logística y gerentes: KPIs de costo de envío, órdenes por forma de envío, productos con mayor costo de envío y margen mensual por gerente."></a>
+              </div>
+              <figcaption class="shot-caption">Capturas reales del reporte (filtro 2024). Tocá una imagen para verla en tamaño completo.</figcaption>
+            </figure>
+          </div>
+
+          <details class="card-details">
+            <summary>Ver detalle<span class="visually-hidden"> de Enviar S.A.</span></summary>
+            <dl class="details-list details-list--wide">
+              <div><dt>Problema</dt>
+                <dd>Enviar S.A. vende tecnología, mobiliario y material de escritorio en todo el país. La gerencia necesitaba seguir las ventas mensuales y acumuladas del año, los productos más vendidos, las formas de envío, los principales clientes por segmento, el margen mensual de cada gerente provincial y los productos con mayor costo de envío.</dd></div>
+              <div><dt>Solución</dt>
+                <dd>Un modelo de Power BI sobre el data warehouse en estrella de la empresa (tabla de hechos de ventas y dimensiones de producto, cliente, segmento, provincia, envío, prioridad, embalaje y centro de distribución), con una tabla de calendario agregada. Las medidas DAX cubren comparación interanual, acumulado del año, rankings top 10 y colores condicionales. El reporte está organizado por pregunta de negocio y no por consigna, con un fondo diseñado a medida, navegación lateral, filtros sincronizados y un panel de hallazgos.</dd></div>
+              <div><dt>Tecnologías</dt>
+                <dd>Power BI Desktop, DAX (inteligencia de tiempo, RANKX), Power Query, modelado dimensional, formato de proyecto de Power BI (PBIP)</dd></div>
+              <div><dt>Estado</dt>
+                <dd>Finalizado — electiva Inteligencia de Negocios, UTN FRBA (2025), rediseñado en 2026.</dd></div>
+            </dl>
+          </details>
+        </article>
+
+        <!-- ---------- SQL Server Data Migration & BI ---------- -->
+        <article id="project-sql-migration" class="bento-card bento-card--sql spotlight reveal" aria-labelledby="project-sql-migration-title">
+          <div class="card-meta">
+            <p class="card-kicker">Ingeniería de datos</p>
+            <p class="status-chip status-chip--done">Finalizado</p>
+          </div>
+          <h3 id="project-sql-migration-title" class="card-title">Migración de datos y BI en SQL Server</h3>
+          <p class="card-problem">Una inmobiliaria manejaba toda su operación en una sola tabla desnormalizada de unas 90 columnas.</p>
+
+          <figure class="card-visual">
+            <span class="concept-tag">Concepto</span>
+            <svg class="diagram" viewBox="0 0 340 150" role="img" aria-labelledby="dg-sql-title">
+              <title id="dg-sql-title">Diagrama entidad-relación simplificado del modelo transaccional: Provincia, Localidad, Barrio, Inmueble, Persona, Anuncio, Alquiler y Venta.</title>
+              <g class="dg-lines">
+                <path d="M49 34v28M49 88v28M90 129h38M169 34v82M210 129h38M289 116V88M330 129h6V21h-6"/>
+              </g>
+              <g class="dg-box"><rect x="8" y="8" width="82" height="26" rx="5"/><text x="49" y="25">Provincia</text></g>
+              <g class="dg-box"><rect x="8" y="62" width="82" height="26" rx="5"/><text x="49" y="79">Localidad</text></g>
+              <g class="dg-box"><rect x="8" y="116" width="82" height="26" rx="5"/><text x="49" y="133">Barrio</text></g>
+              <g class="dg-box"><rect x="128" y="8" width="82" height="26" rx="5"/><text x="169" y="25">Persona</text></g>
+              <g class="dg-box dg-box--key"><rect x="128" y="116" width="82" height="26" rx="5"/><text x="169" y="133">Inmueble</text></g>
+              <g class="dg-box"><rect x="248" y="8" width="82" height="26" rx="5"/><text x="289" y="25">Venta</text></g>
+              <g class="dg-box"><rect x="248" y="62" width="82" height="26" rx="5"/><text x="289" y="79">Alquiler</text></g>
+              <g class="dg-box dg-box--key"><rect x="248" y="116" width="82" height="26" rx="5"/><text x="289" y="133">Anuncio</text></g>
+            </svg>
+          </figure>
+
+          <p class="card-summary">Modelo transaccional normalizado, migración completa de los datos con stored procedures y un modelo de BI en estrella con 9 vistas de indicadores.</p>
+
+          <ol class="stage-track" aria-label="Etapas del proyecto">
+            <li class="stage stage--done">Modelo transaccional <span class="visually-hidden">(hecho)</span></li>
+            <li class="stage stage--done">Migración <span class="visually-hidden">(hecho)</span></li>
+            <li class="stage stage--done">Modelo de BI <span class="visually-hidden">(hecho)</span></li>
+            <li class="stage stage--done">Verificación <span class="visually-hidden">(hecho)</span></li>
+          </ol>
+
+          <ul class="tags" aria-label="Tecnologías principales">
+            <li>SQL Server 2019</li>
+            <li>T-SQL</li>
+            <li>Stored procedures</li>
+          </ul>
+
+          <details class="card-details">
+            <summary>Ver detalle<span class="visually-hidden"> de SQL Server Data Migration &amp; BI</span></summary>
+            <dl class="details-list">
+              <div><dt>Problema</dt>
+                <dd>Una inmobiliaria tenía toda su operación (inmuebles, propietarios, anuncios, agentes, sucursales, ventas, alquileres, inquilinos y pagos) en una única tabla desnormalizada de unas 90 columnas, con datos mezclados y repetidos en cada fila.</dd></div>
+              <div><dt>Solución</dt>
+                <dd>Un modelo transaccional normalizado en SQL Server: un stored procedure en T-SQL crea sus 29 tablas con claves primarias y foráneas, documentadas en un DER completo. Entre las decisiones de diseño: una entidad Persona común con tablas de roles, catálogos para todos los valores tipificados, una jerarquía Provincia → Localidad → Barrio y una relación N:M entre inmuebles y características. Los stored procedures migran los datos en orden de dependencias sin modificar el origen; un modelo de BI en estrella (9 dimensiones, entre ellas tiempo, ubicación, sucursal, rango etario y rango de superficie) alimenta 9 vistas de indicadores como morosidad en alquileres, conversión de anuncios en operaciones, precio del m² y comisiones por sucursal; y un script de verificación compara cantidades entre origen y destino.</dd></div>
+              <div><dt>Tecnologías</dt>
+                <dd>SQL Server 2019, T-SQL (DDL, DML, stored procedures, vistas), SQL Server Management Studio</dd></div>
+              <div><dt>Estado</dt>
+                <dd>Finalizado — proyecto académico de Gestión de Datos, UTN FRBA. La base de origen provista por la cátedra no está incluida en el repositorio.</dd></div>
+            </dl>
+          </details>
+
+          <ul class="card-links">
+            <li><a class="link-button" href="https://github.com/agtorres1/sql-server-data-migration-bi">Repositorio en GitHub<span class="visually-hidden"> de SQL Server Data Migration &amp; BI</span></a></li>
+          </ul>
+        </article>
+
+        <!-- ---------- TSU Academic Tracking ---------- -->
+        <article id="project-tsu" class="bento-card bento-card--tsu spotlight reveal" aria-labelledby="project-tsu-title">
+          <div class="card-meta">
+            <p class="card-kicker">Calidad de datos</p>
+            <p class="status-chip status-chip--done">Finalizado</p>
+          </div>
+          <h3 id="project-tsu-title" class="card-title">Seguimiento académico TSU</h3>
+          <p class="card-problem">Un programa de tutorías seguía a sus estudiantes en más de 15 planillas de Excel inconsistentes.</p>
+
+          <p class="note"><strong>Datos sintéticos.</strong> Todos los datos del proyecto son sintéticos. Los resultados ilustran el método y no describen al programa real.</p>
+
+          <figure class="card-visual">
+            <span class="concept-tag">Concepto</span>
+            <svg class="diagram" viewBox="0 0 356 128" role="img" aria-labelledby="dg-tsu-title">
+              <title id="dg-tsu-title">Flujo de datos: muchas planillas, resolución de identidades por documento, luego email y luego nombre, una base relacional única y un tablero.</title>
+              <g class="dg-sheet"><rect x="4" y="34" width="52" height="44" rx="4"/><rect x="10" y="28" width="52" height="44" rx="4"/><rect x="16" y="22" width="52" height="44" rx="4"/><path d="M16 33h52M16 44h52M16 55h52M33 22v44M50 22v44"/></g>
+              <text class="dg-label" x="38" y="100">15+ planillas</text>
+              <path class="dg-arrow" d="M72 50h16"/>
+              <g class="dg-box dg-box--key"><rect x="92" y="26" width="120" height="48" rx="6"/><text x="152" y="46">Resolver IDs</text><text class="dg-small" x="152" y="62">DNI → email → nombre</text></g>
+              <path class="dg-arrow" d="M214 50h10"/>
+              <g class="dg-cyl"><path d="M228 30v36c0 3.3 9 6 20 6s20-2.7 20-6V30"/><ellipse cx="248" cy="30" rx="20" ry="6"/></g>
+              <text class="dg-label" x="248" y="100">Base única</text>
+              <path class="dg-arrow" d="M272 50h14"/>
+              <g class="dg-dash"><rect x="290" y="24" width="42" height="52" rx="4"/><rect x="296" y="31" width="30" height="8" rx="2"/><rect x="296" y="44" width="13" height="25" rx="2"/><rect x="313" y="44" width="13" height="25" rx="2"/></g>
+              <text class="dg-label dg-label--end" x="354" y="100">Tablero</text>
+            </svg>
+          </figure>
+
+          <p class="card-summary">Pipeline en Python que consolida todas las planillas en un único dataset relacional, con cargas incrementales desde Google Forms y un tablero en Looker Studio.</p>
+
+          <ul class="tags" aria-label="Tecnologías principales">
+            <li>Python</li>
+            <li>pandas</li>
+            <li>Apps Script</li>
+            <li>Looker Studio</li>
+          </ul>
+
+          <details class="card-details">
+            <summary>Ver detalle<span class="visually-hidden"> de TSU Academic Tracking</span></summary>
+            <p class="details-note">Todos los datos del proyecto son sintéticos: imitan la forma y el desorden de las planillas reales sin copiar ninguna fila. Los resultados ilustran el método y no describen al programa real.</p>
+            <dl class="details-list">
+              <div><dt>Problema</dt>
+                <dd>Un programa universitario de tutorías seguía a sus estudiantes en más de 15 planillas de Excel inconsistentes: encabezados distintos, códigos en texto libre, celdas marcadas con colores y documentos cargados con formatos diferentes. La coordinación necesitaba saber cuánta actividad académica recuperan los estudiantes después del programa y qué perfiles se involucran, sin cruzar planillas a mano.</dd></div>
+              <div><dt>Solución</dt>
+                <dd>Un pipeline en Python que consolida todas las planillas en un único dataset relacional: decodifica cada celda (texto y color) y resuelve identidades por DNI, luego email y luego nombre, sin unir nunca dos documentos distintos, con una cola de revisión manual. La carga incremental funciona con Google Forms y Apps Script, las importaciones de alumnos son idempotentes y un tablero en Looker Studio muestra el embudo, la actividad posterior al programa y los perfiles de estudiantes. El análisis es descriptivo a propósito (tasas con intervalos de confianza de Wilson), no predictivo.</dd></div>
+              <div><dt>Tecnologías</dt>
+                <dd>Python (pandas, openpyxl, matplotlib), Jupyter, Google Forms, Google Sheets y Apps Script, Looker Studio</dd></div>
+              <div><dt>Estado</dt>
+                <dd>Finalizado.</dd></div>
+            </dl>
+          </details>
+
+          <ul class="card-links">
+            <li><a class="link-button" href="https://github.com/agtorres1/tsu-seguimiento-academico">Repositorio en GitHub<span class="visually-hidden"> de TSU Academic Tracking</span></a></li>
+            <li><a class="link-button link-button--accent" href="https://agtorres1.github.io/tsu-seguimiento-academico/" hreflang="es">Demo interactiva (simulación)</a></li>
+          </ul>
+        </article>
+
+        <!-- ---------- Cross-sell Model — Azure MLOps ---------- -->
+        <article id="project-cross-sell" class="bento-card bento-card--xsell spotlight reveal" aria-labelledby="project-cross-sell-title">
+          <div class="card-meta">
+            <p class="card-kicker">Machine Learning y Cloud</p>
+            <p class="status-chip status-chip--progress">En curso</p>
+          </div>
+          <h3 id="project-cross-sell-title" class="card-title">Modelo de cross-sell — Azure MLOps</h3>
+          <p class="card-problem">Estimar qué clientes de un banco tienen más probabilidad de contratar un nuevo paquete de productos.</p>
+
+          <figure class="card-visual">
+            <span class="concept-tag">Pipeline diseñado</span>
+            <svg class="diagram" viewBox="0 0 340 150" role="img" aria-labelledby="dg-xsell-title">
+              <title id="dg-xsell-title">Pipeline de MLOps diseñado: data asset, tabla analítica, entrenamiento y ajuste, control de calidad, registro del modelo, endpoint y monitoreo, con reentrenamiento ante drift.</title>
+              <g class="dg-box"><rect x="4" y="12" width="68" height="30" rx="5"/><text x="38" y="31">Data asset</text></g>
+              <path class="dg-arrow" d="M74 27h10"/>
+              <g class="dg-box"><rect x="88" y="12" width="56" height="30" rx="5"/><text x="116" y="31">ABT</text></g>
+              <path class="dg-arrow" d="M146 27h10"/>
+              <g class="dg-box dg-box--key"><rect x="160" y="12" width="82" height="30" rx="5"/><text x="201" y="31">Entrenar</text></g>
+              <path class="dg-arrow" d="M244 27h14"/>
+              <g class="dg-gate"><path d="M292 7l30 20-30 20-30-20z"/><text x="292" y="31">Control</text></g>
+              <path class="dg-arrow" d="M292 49v51"/>
+              <g class="dg-box"><rect x="252" y="104" width="80" height="30" rx="5"/><text x="292" y="123">Registro</text></g>
+              <path class="dg-arrow" d="M250 119h-14"/>
+              <g class="dg-box"><rect x="152" y="104" width="80" height="30" rx="5"/><text x="192" y="123">Endpoint</text></g>
+              <path class="dg-arrow" d="M150 119h-14"/>
+              <g class="dg-box"><rect x="36" y="104" width="96" height="30" rx="5"/><text x="84" y="123">Monitoreo</text></g>
+              <path class="dg-loop" d="M84 102V74h117V46"/>
+              <text class="dg-label" x="143" y="68">drift → reentrenar</text>
+            </svg>
+          </figure>
+
+          <p class="card-summary">Modelo de clasificación supervisada construido con metodología KDD y diseñado para llevarse a producción de punta a punta en Azure Machine Learning.</p>
+
+          <ul class="tags" aria-label="Tecnologías principales">
+            <li>Python</li>
+            <li>scikit-learn</li>
+            <li>LightGBM</li>
+            <li>Azure ML</li>
+            <li>MLflow</li>
+          </ul>
+
+          <details class="card-details">
+            <summary>Ver detalle<span class="visually-hidden"> de Cross-sell Model — Azure MLOps</span></summary>
+            <dl class="details-list">
+              <div><dt>Problema</dt>
+                <dd>Un banco necesita estimar qué clientes tienen más probabilidad de contratar un nuevo paquete de productos, para mejorar la conversión de sus campañas y colas de contacto.</dd></div>
+              <div><dt>Solución</dt>
+                <dd>Un modelo de clasificación supervisada con metodología KDD: una tabla analítica a nivel cliente con variables agregadas en ventanas de 3 y 6 meses, un mes de separación para evitar data leakage, y una comparación de regresión logística, árbol de decisión, Random Forest y LightGBM evaluados con ROC-AUC, KS y lift por decil. Está diseñado para llevarse a producción en Azure Machine Learning: data assets versionados, pipelines con SDK v2 que reutilizan el mismo código de los notebooks, un control de calidad antes de registrar el modelo, endpoints administrados para el scoring y monitoreo de drift.</dd></div>
+              <div><dt>Tecnologías</dt>
+                <dd>Python, scikit-learn y LightGBM, Azure Machine Learning (SDK v2), MLflow</dd></div>
+              <div><dt>Estado</dt>
+                <dd>En curso — las métricas finales (AUC-ROC, KS, lift del primer decil) todavía no están publicadas en el README.</dd></div>
+            </dl>
+          </details>
+
+          <ul class="card-links">
+            <li><a class="link-button" href="https://github.com/agtorres1/cross-sell-model-azure-mlops">Repositorio en GitHub<span class="visually-hidden"> de Cross-sell Model — Azure MLOps</span></a></li>
+          </ul>
+        </article>
+
+        <!-- ---------- StockifAI Forecast ---------- -->
+        <article id="project-stockifai-forecast" class="bento-card bento-card--forecast spotlight reveal" aria-labelledby="project-stockifai-forecast-title">
+          <div class="card-meta">
+            <p class="card-kicker">Machine Learning y Cloud</p>
+            <p class="status-chip status-chip--progress">En construcción</p>
+          </div>
+          <h3 id="project-stockifai-forecast-title" class="card-title">StockifAI Forecast</h3>
+          <p class="card-problem">Pronosticar la demanda de repuestos automotores a 4 semanas, como módulo independiente.</p>
+
+          <figure class="card-visual">
+            <span class="concept-tag">Curva ilustrativa, no son datos reales</span>
+            <svg class="diagram" viewBox="0 0 340 132" role="img" aria-labelledby="dg-fc-title">
+              <title id="dg-fc-title">Serie de tiempo ilustrativa: historia semanal seguida de un pronóstico a cuatro semanas con banda de incertidumbre. No son datos reales.</title>
+              <path class="dg-axis" d="M10 108h320"/>
+              <path class="dg-axis dg-axis--ticks" d="M255 104v8M280 104v8M305 104v8M330 104v8"/>
+              <path class="dg-band" d="M230 46 255 34 280 38 305 28 330 30 330 62 305 58 280 62 255 56Z"/>
+              <path class="dg-series" d="M10 80 30 70 50 78 70 58 90 66 110 50 130 62 150 44 170 56 190 40 210 52 230 46"/>
+              <path class="dg-forecast" d="M230 46 255 45 280 50 305 43 330 46"/>
+              <path class="dg-today" d="M230 14v94"/>
+              <text class="dg-label" x="120" y="126">historia semanal</text>
+              <text class="dg-label dg-label--accent" x="280" y="126">próximas 4 semanas</text>
+            </svg>
+          </figure>
+
+          <p class="card-summary">El módulo de pronóstico del proyecto final StockifAI, separado en su propio repositorio y en proceso de migración a Azure Machine Learning.</p>
+
+          <ul class="tags" aria-label="Tecnologías principales">
+            <li>Python</li>
+            <li>LightGBM</li>
+            <li>Azure ML</li>
+          </ul>
+
+          <details class="card-details">
+            <summary>Ver detalle<span class="visually-hidden"> de StockifAI Forecast</span></summary>
+            <dl class="details-list">
+              <div><dt>Problema</dt>
+                <dd>Pronosticar la demanda de repuestos automotores a 4 semanas, como un módulo separado del producto StockifAI.</dd></div>
+              <div><dt>Solución</dt>
+                <dd>El módulo de pronóstico del proyecto final StockifAI, separado en su propio repositorio y en proceso de migración a Azure Machine Learning. Usa datos de demostración de egresos de stock de 2020 a 2025.</dd></div>
+              <div><dt>Tecnologías</dt>
+                <dd>Python, LightGBM, Azure Machine Learning</dd></div>
+              <div><dt>Estado</dt>
+                <dd>En construcción.</dd></div>
+            </dl>
+          </details>
+
+          <ul class="card-links">
+            <li><a class="link-button" href="https://github.com/agtorres1/stockifai-forecast">Repositorio en GitHub<span class="visually-hidden"> de StockifAI Forecast</span></a></li>
+          </ul>
+        </article>
+
+        <!-- ---------- StockifAI2 — end-to-end product (featured) ---------- -->
+        <article id="project-stockifai2" class="bento-card bento-card--product spotlight reveal" aria-labelledby="project-stockifai2-title">
+          <div class="product-layout">
+            <div class="product-layout__text">
+              <div class="card-meta">
+                <p class="card-kicker">Producto completo</p>
+                <p class="status-chip status-chip--done">Proyecto final de carrera</p>
+              </div>
+              <h3 id="project-stockifai2-title" class="card-title card-title--large">StockifAI2 — Gestión de inventario</h3>
+              <p class="card-problem">En los talleres automotores, tener demasiados repuestos inmoviliza plata y genera obsolescencia, y tener pocos deja autos parados esperando una pieza.</p>
+              <p class="card-summary">Un producto web completo que centraliza el stock de uno o varios talleres, pronostica la demanda semanal de cada repuesto para las próximas 4 semanas y genera alertas automáticas de quiebre inminente, stock bajo y sobrestock.</p>
+
+              <ul class="tags" aria-label="Tecnologías principales">
+                <li>Angular 18</li>
+                <li>Django REST Framework</li>
+                <li>LightGBM</li>
+                <li>MySQL 8</li>
+                <li>Auth0</li>
+                <li>AWS</li>
+              </ul>
+            </div>
+
+            <figure class="card-visual card-visual--arch" aria-labelledby="arch-caption">
+              <span class="concept-tag">Diagrama basado en el README</span>
+              <ul class="arch">
+                <li class="arch__node arch__node--client"><span class="arch__name">Angular 18 frontend</span><span class="arch__desc">Tablero, alertas, mapa, catálogo</span></li>
+                <li class="arch__node arch__node--auth"><span class="arch__name">Auth0</span><span class="arch__desc">Autenticación JWT</span></li>
+                <li class="arch__node arch__node--api"><span class="arch__name">Django REST API</span><span class="arch__desc">Stock, movimientos, importaciones</span></li>
+                <li class="arch__node arch__node--ml"><span class="arch__name">Pipeline de ML</span><span class="arch__desc">LightGBM por segmento, corrida semanal</span></li>
+                <li class="arch__node arch__node--db"><span class="arch__name">MySQL 8</span><span class="arch__desc">Talleres, repuestos, stock</span></li>
+                <li class="arch__node arch__node--alerts"><span class="arch__name">Alertas y KPIs</span><span class="arch__desc">Quiebre, stock bajo, sobrestock</span></li>
+              </ul>
+              <p class="arch__infra">Despliegue: AWS, Nginx, Gunicorn</p>
+              <figcaption id="arch-caption" class="visually-hidden">Arquitectura de StockifAI2, basada en la documentación del proyecto.</figcaption>
+            </figure>
+          </div>
+
+          <details class="card-details">
+            <summary>Ver detalle<span class="visually-hidden"> de StockifAI2</span></summary>
+            <dl class="details-list details-list--wide">
+              <div><dt>Problema</dt>
+                <dd>En talleres y concesionarios, tener demasiados repuestos inmoviliza plata y genera obsolescencia, y tener pocos deja autos parados esperando una pieza.</dd></div>
+              <div><dt>Solución</dt>
+                <dd>
+                  <p>Un producto web completo que centraliza el stock de uno o varios talleres, pronostica la demanda semanal de cada repuesto para las próximas 4 semanas y genera alertas automáticas de quiebre inminente, stock bajo y sobrestock.</p>
+                  <p>Incluye un tablero de inventario con KPIs y reportes en Excel, clasificación de rotación de cada repuesto, un mapa para encontrar qué taller del grupo tiene una pieza, un catálogo de repuestos, importación masiva de stock desde Excel, y talleres, grupos y usuarios con roles.</p>
+                  <p>El pipeline de ML segmenta los repuestos en venta frecuente e intermitente, construye variables de rezagos, ventanas móviles, calendario (con feriados argentinos) y macroeconomía, entrena un modelo LightGBM por segmento con validación temporal y pronósticos rodantes, y corre automáticamente cada semana o a pedido desde la API.</p>
+                </dd></div>
+              <div><dt>Tecnologías</dt>
+                <dd>
+                  <ul class="stack">
+                    <li><span class="stack__layer">Frontend:</span> Angular 18, Bootstrap 5, Chart.js, Leaflet</li>
+                    <li><span class="stack__layer">Backend:</span> Django 5, Django REST Framework, django-crontab</li>
+                    <li><span class="stack__layer">Machine learning:</span> LightGBM, scikit-learn, pandas, NumPy</li>
+                    <li><span class="stack__layer">Base de datos:</span> MySQL 8</li>
+                    <li><span class="stack__layer">Autenticación:</span> Auth0 (JWT)</li>
+                    <li><span class="stack__layer">Infraestructura:</span> AWS, Nginx, Gunicorn</li>
+                  </ul>
+                </dd></div>
+              <div><dt>Estado</dt>
+                <dd>Proyecto final de Ingeniería en Sistemas de Información, UTN.</dd>
+                <!-- PENDING: year of the project and the owner's role within the team
+                     (the README leaves "[Facultad Regional]" and "[año]" as placeholders). --></div>
+            </dl>
+          </details>
+
+          <ul class="card-links">
+            <li><a class="link-button" href="https://github.com/agtorres1/StockifAI2">Repositorio en GitHub<span class="visually-hidden"> de StockifAI2</span></a></li>
+            <!-- No public demo URL found. The repo includes a landing-page folder;
+                 add a link here only once it is published and verified.
+                 Real screenshots exist in that repository but are not in the local files,
+                 so none are shown here. -->
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== EDUCATION ===================== -->
+    <section id="education" class="section section--split" aria-labelledby="education-title">
+      <h2 id="education-title" class="section__title">Formación</h2>
+
+      <div class="section__body">
+        <ul class="entries">
+          <li class="entry-card spotlight reveal">
+            <svg class="entry-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 9.5 12 5l10 4.5-10 4.5L2 9.5Z"/><path d="M6 11.3V16c0 1.2 2.7 2.5 6 2.5s6-1.3 6-2.5v-4.7"/></svg>
+            <div>
+              <p class="entry__title">Ingeniería en Sistemas de Información — Universidad Tecnológica Nacional, Facultad Regional Buenos Aires (UTN FRBA)</p>
+              <p class="entry__meta"><span class="status-chip status-chip--progress">En curso</span> 2020 – 2026 (egreso previsto en diciembre de 2026)</p>
+            </div>
+          </li>
+        </ul>
+
+        <h3>Cursos y certificaciones</h3>
+        <ul class="entries">
+          <li class="entry-card spotlight reveal">
+            <div>
+              <p class="entry__title">Análisis de Datos — Talento Tech</p>
+              <p class="entry__meta"><span class="status-chip status-chip--progress">En curso</span></p>
+            </div>
+          </li>
+          <li class="entry-card spotlight reveal">
+            <div>
+              <p class="entry__title">Microsoft AI-300: Operationalizing Machine Learning and Generative AI Solutions</p>
+              <p class="entry__meta"><span class="status-chip status-chip--progress">En preparación</span></p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="contact-card reveal">
+        <h2 id="contact-title" class="section__title">Contacto</h2>
+        <ul class="contact-list">
+          <li><a class="contact-link" href="https://github.com/agtorres1">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></svg>
+            <span>GitHub — agtorres1</span></a></li>
+          <li><a class="contact-link" href="mailto:mica.agus177.mt@gmail.com">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+            <span>Email — mica.agus177.mt@gmail.com</span></a></li>
+          <li><a class="contact-link" href="https://www.linkedin.com/in/agustina-torres-83513a188/">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>
+            <span>LinkedIn — Agustina Torres</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer id="footer" class="site-footer">
+    <div class="site-footer__inner">
+      <p>&copy; 2026 Agustina Torres</p>
+      <p><a href="https://github.com/agtorres1">GitHub</a></p>
+      <p><a href="#header">Volver arriba</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
